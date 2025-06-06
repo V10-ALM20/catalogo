@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Mascotas - Junio</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Un fondo gris claro */
+        }
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 1rem; /* Esquinas redondeadas */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin-bottom: 1.5rem; /* Espacio entre tarjetas */
+            padding: 1.5rem;
+            display: flex; /* Para alinear imagen y texto */
+            align-items: center; /* Centrar verticalmente contenido */
+        }
+        .product-image {
+            width: 150px; /* Ancho fijo para las imágenes */
+            height: 150px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Para asegurar que la imagen cubra el área */
+            border-radius: 0.75rem; /* Bordes redondeados para la imagen */
+            margin-right: 1.5rem; /* Espacio a la derecha de la imagen */
+            flex-shrink: 0; /* Evita que la imagen se encoja */
+        }
+        .product-content {
+            flex-grow: 1; /* Permite que el contenido crezca */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Justificar el texto al centro verticalmente */
+        }
+        .product-title {
+            font-size: 1.35rem; /* Título más grande */
+            font-weight: 700; /* Negrita */
+            color: #343a40; /* Color oscuro para el título */
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            font-size: 1.2rem; /* Precio ligeramente más grande */
+            font-weight: 600; /* Negrita */
+            color: #007bff; /* Color azul para el precio */
+            margin-bottom: 0.5rem;
+        }
+        .product-offer {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #dc3545; /* Color rojo vibrante para ofertas */
+            margin-bottom: 0.5rem;
+        }
+        .product-description {
+            font-size: 0.95rem;
+            color: #6c757d; /* Color gris para la descripción */
+            text-align: justify; /* Justificar el texto */
+        }
+        .header {
+            background-color: #007bff; /* Azul primario de Bootstrap */
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 767.98px) {
+            .product-card {
+                flex-direction: column; /* Apilar imagen y texto en pantallas pequeñas */
+                text-align: center;
+            }
+            .product-image {
+                margin-right: 0;
+                margin-bottom: 1rem; /* Espacio debajo de la imagen */
+            }
+            .product-title,
+            .product-price,
+            .product-offer,
+            .product-description {
+                text-align: center; /* Centrar texto en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Catálogo de Productos para Mascotas</h1>
+            <p class="lead">Las mejores ofertas para tus compañeros peludos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <!-- Producto 1 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/AEC6CF/FFFFFF?text=ARENA" alt="Imagen de Arena Bentonita" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG</h4>
+                        <p class="product-price">Precio: ₡3,175.00</p>
+                        <p class="product-description">Arena de bentonita para gato con aroma a lavanda, en forma de bolitas de 1-3.5mm y 8kg de peso, ideal para mantener la higiene de tu mascota.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/FFDDC1/333333?text=ARENA" alt="Imagen de Arena Bentonita" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG</h4>
+                        <p class="product-price">Precio: ₡3,175.00</p>
+                        <p class="product-description">Arena de bentonita para gato con aroma a limón, en forma de bolitas de 1-3.5mm y 8kg de peso, que ayuda a neutralizar los olores eficazmente.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/CCE2CB/333333?text=ARENA" alt="Imagen de Arena Bentonita" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG</h4>
+                        <p class="product-price">Precio: ₡3,175.00</p>
+                        <p class="product-description">Arena de bentonita para gato con aroma a manzana, en forma de bolitas de 1-3.5mm y 8kg de peso, para un ambiente fresco y limpio en casa.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 4 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/FFC9C9/333333?text=ARENERO" alt="Imagen de Arenero" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡3,950.00</p>
+                        <p class="product-description">Arenero de plástico duradero para gato, incluye pala para facilitar la limpieza, con dimensiones de 47x39x14cm, disponible en varios colores.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 5 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/B8DEE8/333333?text=BOLA" alt="Imagen de Bola de Juguete" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,750.00</p>
+                        <p class="product-description">Bola de plástico resistente para mascotas, con relieve de hueso, sonido incorporado y asa para un mejor agarre. Medidas: 14x10cm.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 6 (con oferta) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/B0E0E6/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">BOLSO TELA TRANSPORTADOR P/MASCOTA 29X27X42CM SURTIDO</h4>
+                        <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
+                        <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
+                        <p class="product-description">Cómodo bolso transportador de tela para mascota, ligero y resistente, con dimensiones de 29x27x42cm, disponible en variedad de diseños.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 7 (con oferta) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/ADD8E6/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">BOLSO TELA TRANSPORTADOR P/MASCOTA C/VENTANA 30X29X42CM SURTIDO</h4>
+                        <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
+                        <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
+                        <p class="product-description">Bolso de tela para mascotas con ventana de ventilación, de 30x29x42cm, ideal para viajes cortos, surtido en colores.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 8 (con oferta) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/87CEEB/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">BOLSO TRANSPORTADOR P/MASCOTA C/DETALLE ACRILICO NEGRO GRIS</h4>
+                        <p class="product-price">Precio: <s class="text-secondary">₡8,500.00</s></p>
+                        <p class="product-offer">Oferta: ₡2,125.00 (75%) hasta 17/06/2025</p>
+                        <p class="product-description">Elegante bolso transportador para mascota con detalles de acrílico, en tonos negro y gris, para un transporte seguro y con estilo.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 9 (con oferta) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/6495ED/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">BOLSO TRANSPORTADOR TELA P/MASCOTA 45X22X27CM SURTIDO</h4>
+                        <p class="product-price">Precio: <s class="text-secondary">₡6,500.00</s></p>
+                        <p class="product-offer">Oferta: ₡1,625.00 (75%) hasta 17/06/2025</p>
+                        <p class="product-description">Bolso transportador de tela espacioso, ideal para mascotas más grandes, de 45x22x27cm, disponible en una selección de diseños.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 10 (con oferta) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <img src="https://placehold.co/150x150/4682B4/333333?text=CAMA" alt="Imagen de Cama para Mascota" class="product-image">
+                    <div class="product-content">
+                        <h4 class="product-title">CAMA TELA AFELPADO ESTAMPADO P/MASCOTA 60X60CM SURTIDO</h4>
+                        <p class="product-price">Precio: <s class="text-secondary">₡6,450.00</s></p>
+                        <p class="product-offer">Oferta: ₡4,100.00 (36.43%) hasta 08/06/2025</p>
+                        <p class="product-description">Cama de tela afelpada con estampado divertido, de 60x60cm, proporciona un descanso suave y acogedor para tu mascota.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS CDN (Bundle includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
