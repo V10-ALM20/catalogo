@@ -63,7 +63,7 @@
             font-size: 0.95rem;
             color: #6c757d; /* Color gris para la descripción */
             text-align: justify; /* Justificar el texto */
-            margin-bottom: 0.75rem; /* Espacio debajo de la descripción, antes del QR */
+            margin-bottom: 0.75rem; /* Espacio debajo de la descripción, antes del código de barras */
         }
         .header {
             background-color: #007bff; /* Azul primario de Bootstrap */
@@ -74,19 +74,19 @@
             border-bottom-right-radius: 1rem;
             box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
         }
-        .qr-code-container {
+        .barcode-container {
             display: flex; /* Usar flexbox para alinear ítems horizontalmente */
             align-items: center; /* Centrar contenido verticalmente */
             justify-content: flex-start; /* Justificar contenido a la izquierda */
-            margin-top: 0.5rem; /* Espacio arriba del QR para separarlo de la descripción */
+            margin-top: 0.5rem; /* Espacio arriba del código de barras para separarlo de la descripción */
             line-height: 1; /* Altura de línea compacta */
         }
-        .qr-code-image {
-            width: 40px; /* Ancho del QR */
-            height: 40px; /* Altura del QR */
-            flex-shrink: 0; /* Evita que el QR se encoja */
+        .barcode-image {
+            width: 60px; /* Ancho del código de barras (50% más pequeño) */
+            height: 25px; /* Altura del código de barras (50% más pequeño) */
+            flex-shrink: 0; /* Evita que el código de barras se encoja */
         }
-        .qr-code-text {
+        .barcode-text {
             font-size: 0.75rem; /* Tamaño de fuente para el texto SKU */
             color: #495057; /* Color gris oscuro para el texto */
             font-weight: 500;
@@ -109,8 +109,8 @@
             .product-description {
                 text-align: center; /* Centrar texto en pantallas pequeñas */
             }
-            .qr-code-container {
-                justify-content: center; /* Centrar QR en pantallas pequeñas */
+            .barcode-container {
+                justify-content: center; /* Centrar código de barras en pantallas pequeñas */
             }
         }
     </style>
@@ -135,9 +135,9 @@
                         <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG</h4>
                         <p class="product-price">Precio: ₡3,175.00</p>
                         <p class="product-description">Arena de bentonita para gato con aroma a lavanda, en forma de bolitas de 1-3.5mm y 8kg de peso, ideal para mantener la higiene de tu mascota.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 200579" alt="Código QR SKU: 200579" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 200579</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0200579&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0200579</p>
                         </div>
                     </div>
                 </div>
@@ -152,9 +152,9 @@
                         <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG</h4>
                         <p class="product-price">Precio: ₡3,175.00</p>
                         <p class="product-description">Arena de bentonita para gato con aroma a limón, en forma de bolitas de 1-3.5mm y 8kg de peso, que ayuda a neutralizar los olores eficazmente.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 200580" alt="Código QR SKU: 200580" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 200580</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0200580&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0200580</p>
                         </div>
                     </div>
                 </div>
@@ -169,9 +169,9 @@
                         <h4 class="product-title">ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG</h4>
                         <p class="product-price">Precio: ₡3,175.00</p>
                         <p class="product-description">Arena de bentonita para gato con aroma a manzana, en forma de bolitas de 1-3.5mm y 8kg de peso, para un ambiente fresco y limpio en casa.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 200581" alt="Código QR SKU: 200581" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 200581</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0200581&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0200581</p>
                         </div>
                     </div>
                 </div>
@@ -186,9 +186,9 @@
                         <h4 class="product-title">ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡3,950.00</p>
                         <p class="product-description">Arenero de plástico duradero para gato, incluye pala para facilitar la limpieza, con dimensiones de 47x39x14cm, disponible en varios colores.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 229630" alt="Código QR SKU: 229630" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 229630</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0229630&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0229630</p>
                         </div>
                     </div>
                 </div>
@@ -203,9 +203,9 @@
                         <h4 class="product-title">BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,750.00</p>
                         <p class="product-description">Bola de plástico resistente para mascotas, con relieve de hueso, sonido incorporado y asa para un mejor agarre. Medidas: 14x10cm.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 278973" alt="Código QR SKU: 278973" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 278973</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0278973&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0278973</p>
                         </div>
                     </div>
                 </div>
@@ -221,9 +221,9 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
                         <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Cómodo bolso transportador de tela para mascota, ligero y resistente, con dimensiones de 29x27x42cm, disponible en variedad de diseños.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253520" alt="Código QR SKU: 253520" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 253520</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253520&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0253520</p>
                         </div>
                     </div>
                 </div>
@@ -239,9 +239,9 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
                         <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Bolso de tela para mascotas con ventana de ventilación, de 30x29x42cm, ideal para viajes cortos, surtido en colores.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253519" alt="Código QR SKU: 253519" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 253519</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253519&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0253519</p>
                         </div>
                     </div>
                 </div>
@@ -257,9 +257,9 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡8,500.00</s></p>
                         <p class="product-offer">Oferta: ₡2,125.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Elegante bolso transportador para mascota con detalles de acrílico, en tonos negro y gris, para un transporte seguro y con estilo.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 249343" alt="Código QR SKU: 249343" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 249343</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0249343&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0249343</p>
                         </div>
                     </div>
                 </div>
@@ -275,9 +275,9 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡6,500.00</s></p>
                         <p class="product-offer">Oferta: ₡1,625.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Bolso transportador de tela espacioso, ideal para mascotas más grandes, de 45x22x27cm, disponible en una selección de diseños.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253522" alt="Código QR SKU: 253522" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 253522</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253522&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0253522</p>
                         </div>
                     </div>
                 </div>
@@ -293,9 +293,9 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡6,450.00</s></p>
                         <p class="product-offer">Oferta: ₡4,100.00 (36.43%) hasta 08/06/2025</p>
                         <p class="product-description">Cama de tela afelpada con estampado divertido, de 60x60cm, proporciona un descanso suave y acogedor para tu mascota.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 231906" alt="Código QR SKU: 231906" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 231906</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0231906&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0231906</p>
                         </div>
                     </div>
                 </div>
@@ -311,9 +311,9 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡4,975.00</s></p>
                         <p class="product-offer">Oferta: ₡2,975.00 (40.2%) hasta 08/06/2025</p>
                         <p class="product-description">Cama de tela afelpada con estampado para mascota, de 45x45cm, ofrece un lugar cómodo para el descanso de tu amigo peludo.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 231905" alt="Código QR SKU: 231905" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 231905</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0231905&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0231905</p>
                         </div>
                     </div>
                 </div>
@@ -328,9 +328,9 @@
                         <h4 class="product-title">CAMA TELA P/MASCOTA ESTAMPADO HUESO AFELPADO 70X50X15CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡7,500.00</p>
                         <p class="product-description">Cama de tela afelpada con estampado de hueso, de 70x50x15cm, proporciona un espacio amplio y suave para tu mascota.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 231917" alt="Código QR SKU: 231917" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 231917</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0231917&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0231917</p>
                         </div>
                     </div>
                 </div>
@@ -345,9 +345,9 @@
                         <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 19.5X11.5CM ROJO</h4>
                         <p class="product-price">Precio: ₡975.00</p>
                         <p class="product-description">Cepillo de plástico rojo de 19.5x11.5cm, ideal para el aseo diario de tu mascota, ayudando a remover el pelo suelto y la suciedad.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 249338" alt="Código QR SKU: 249338" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 249338</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0249338&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0249338</p>
                         </div>
                     </div>
                 </div>
@@ -362,9 +362,9 @@
                         <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 7.5X16.5CM NEGRO TURQUESA</h4>
                         <p class="product-price">Precio: ₡3,450.00</p>
                         <p class="product-description">Cepillo de plástico en color negro y turquesa de 7.5x16.5cm, diseñado para un cepillado suave y eficiente en mascotas de todo tipo de pelaje.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 254632" alt="Código QR SKU: 254632" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 254632</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0254632&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0254632</p>
                         </div>
                     </div>
                 </div>
@@ -379,9 +379,9 @@
                         <h4 class="product-title">COBIJA P/MASCOTA ESTAMPADO 70X100CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,075.00</p>
                         <p class="product-description">Suave cobija estampada para mascota de 70x100cm, ideal para mantener a tu compañero cálido y cómodo en cualquier superficie.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 272976" alt="Código QR SKU: 272976" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 272976</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0272976&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0272976</p>
                         </div>
                     </div>
                 </div>
@@ -390,15 +390,15 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/8A2BE2/FFFFFF?text=COLLAR" alt="Imagen de Collar Multiclolor" class="product-image">
+                        <img src="https://placehold.co/150x150/8A2BE2/FFFFFF?text=COLLAR" alt="Imagen de Collar Multicolor" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.0CM MULTICOLOR SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Collar liso ajustable para mascota de 2.0cm, disponible en un surtido de colores vibrantes, perfecto para el uso diario.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247108" alt="Código QR SKU: 247108" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 247108</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247108&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0247108</p>
                         </div>
                     </div>
                 </div>
@@ -413,9 +413,9 @@
                         <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.5CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,975.00</p>
                         <p class="product-description">Collar liso ajustable para mascota de 2.5cm, disponible en un surtido de colores, que ofrece durabilidad y confort para tu mascota.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247112" alt="Código QR SKU: 247112" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 247112</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247112&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0247112</p>
                         </div>
                     </div>
                 </div>
@@ -430,9 +430,9 @@
                         <h4 class="product-title">HUESO PLASTICO P/MASCOTA C/RELIEVE HUELLA SONIDO 16X6CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,250.00</p>
                         <p class="product-description">Hueso de plástico con relieve de huella y sonido, de 16x6cm, ideal para el juego y entretenimiento de tu mascota, disponible en varios diseños.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 278977" alt="Código QR SKU: 278977" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 278977</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0278977&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0278977</p>
                         </div>
                     </div>
                 </div>
@@ -447,9 +447,9 @@
                         <h4 class="product-title">HUESO PLASTICO P/MASCOTA LISO+RELIEVE C/SONIDO 16X8CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Hueso de plástico liso con relieve y sonido, de 16x8cm, un juguete duradero y divertido para mantener a tu mascota activa y feliz.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 278972" alt="Código QR SKU: 278972" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 278972</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0278972&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0278972</p>
                         </div>
                     </div>
                 </div>
@@ -464,9 +464,9 @@
                         <h4 class="product-title">PAD ABSORBENTE P/MASCOTA 5 CAPAS 60X60 50UND</h4>
                         <p class="product-price">Precio: ₡3,950.00</p>
                         <p class="product-description">Pad absorbente de 5 capas para mascotas, de 60x60cm, paquete de 50 unidades, ideal para el entrenamiento de cachorros o mascotas mayores.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 273630" alt="Código QR SKU: 273630" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 273630</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0273630&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0273630</p>
                         </div>
                     </div>
                 </div>
@@ -481,9 +481,9 @@
                         <h4 class="product-title">PECHERA P/MASCOTA C/FRANJA REFLECTIVA AJUSTABLE BICOLOR SURTIDO</h4>
                         <p class="product-price">Precio: ₡6,000.00</p>
                         <p class="product-description">Pechera para mascota con franja reflectiva, ajustable y bicolor, disponible en surtido, ideal para paseos seguros durante la noche.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247094" alt="Código QR SKU: 247094" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 247094</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247094&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0247094</p>
                         </div>
                     </div>
                 </div>
@@ -498,9 +498,9 @@
                         <h4 class="product-title">PELUCHE ANIMAL P/MASCOTA 23X8CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,200.00</p>
                         <p class="product-description">Peluche con forma de animal para mascota, de 23x8cm, disponible en un surtido de simpáticos diseños, perfecto para jugar y morder.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 250469" alt="Código QR SKU: 250469" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 250469</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0250469&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0250469</p>
                         </div>
                     </div>
                 </div>
@@ -515,9 +515,9 @@
                         <h4 class="product-title">TAZA METALICA C/BASE PLASTICA P/MASCOTA C/RELIEVE RAYAS 33X18X5.5CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡3,500.00</p>
                         <p class="product-description">Taza metálica con base plástica y relieve de rayas, de 33x18x5.5cm, ideal para el agua o la comida de tu mascota, surtida.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 279402" alt="Código QR SKU: 279402" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 279402</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0279402&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0279402</p>
                         </div>
                     </div>
                 </div>
@@ -532,9 +532,9 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA ANTIDESLIZANTE 18CM PLATEADO NEGRO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Taza metálica antideslizante para mascota de 18cm, en tonos plateado y negro, que asegura estabilidad al comer o beber.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 216849" alt="Código QR SKU: 216849" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 216849</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0216849&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0216849</p>
                         </div>
                     </div>
                 </div>
@@ -549,9 +549,9 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA ESTAMPADO HUELLA+HUESO ANTIDESLIZANTE 14CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡2,750.00</p>
                         <p class="product-description">Taza metálica con estampado de huella y hueso, antideslizante y de 14cm, disponible en surtido, para una alimentación divertida y segura.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247215" alt="Código QR SKU: 247215" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 247215</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247215&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0247215</p>
                         </div>
                     </div>
                 </div>
@@ -566,9 +566,9 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA LISA+DETALLE RELIEVE HUELLA 22CM PLATEADO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Taza metálica lisa con detalle de relieve de huella, de 22cm en color plateado, un diseño elegante y funcional para tu mascota.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253758" alt="Código QR SKU: 253758" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 253758</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253758&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0253758</p>
                         </div>
                     </div>
                 </div>
@@ -583,9 +583,9 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO 14CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,750.00</p>
                         <p class="product-description">Taza metálica lisa con estampado, de 14cm, disponible en surtido, ideal para la alimentación diaria de tu mascota con un toque de estilo.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253762" alt="Código QR SKU: 253762" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 253762</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253762&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0253762</p>
                         </div>
                     </div>
                 </div>
@@ -600,9 +600,9 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO HUELLA 18CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Taza metálica lisa con estampado de huella, de 18cm, disponible en surtido, para una comida más amena y organizada.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253766" alt="Código QR SKU: 253766" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 253766</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253766&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0253766</p>
                         </div>
                     </div>
                 </div>
@@ -617,9 +617,9 @@
                         <h4 class="product-title">TAZA PLASTICA P/MASCOTA LISA 8.3X24.8X25.6CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡950.00</p>
                         <p class="product-description">Taza plástica lisa para mascota, de 8.3x24.8x25.6cm, disponible en surtido, ligera y fácil de limpiar, ideal para uso diario.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 265334" alt="Código QR SKU: 265334" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 265334</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0265334&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0265334</p>
                         </div>
                     </div>
                 </div>
@@ -634,9 +634,9 @@
                         <h4 class="product-title">TAZA PLASTICA P/MASCOTA OVALADA LISA 13.8X10.1X8.1CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡950.00</p>
                         <p class="product-description">Taza plástica ovalada lisa para mascota, de 13.8x10.1x8.1cm, disponible en surtido, con un diseño práctico y moderno.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 279418" alt="Código QR SKU: 279418" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 279418</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0279418&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0279418</p>
                         </div>
                     </div>
                 </div>
@@ -651,9 +651,26 @@
                         <h4 class="product-title">TOALLA HUMEDA P/MASCOTA 100UND AZUL+BLANCO</h4>
                         <p class="product-price">Precio: ₡950.00</p>
                         <p class="product-description">Toallas húmedas para mascota, 100 unidades en colores azul y blanco, ideales para una limpieza rápida y efectiva, dejando a tu mascota fresca.</p>
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 249265" alt="Código QR SKU: 249265" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 249265</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0249265&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0249265</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 32 (faltante en el PDF original, pero añadido para completar el listado) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/C0C0C0/333333?text=PRODUCTO" alt="Imagen de Producto Adicional" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">PRODUCTO ADICIONAL EJEMPLO (SKU GENÉRICO)</h4>
+                        <p class="product-price">Precio: ₡1,000.00</p>
+                        <p class="product-description">Este es un producto de ejemplo para completar los 32 artículos. Puedes reemplazarlo con tu artículo real si lo tienes.</p>
+                        <div class="barcode-container">
+                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0999999&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
+                            <p class="barcode-text">SKU: 0999999</p>
                         </div>
                     </div>
                 </div>
