@@ -63,7 +63,7 @@
             font-size: 0.95rem;
             color: #6c757d; /* Color gris para la descripción */
             text-align: justify; /* Justificar el texto */
-            margin-bottom: 0.75rem; /* Espacio debajo de la descripción, antes del código de barras */
+            margin-bottom: 0.75rem; /* Espacio debajo de la descripción */
         }
         .header {
             background-color: #007bff; /* Azul primario de Bootstrap */
@@ -74,23 +74,46 @@
             border-bottom-right-radius: 1rem;
             box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
         }
-        .barcode-container {
-            display: flex; /* Usar flexbox para alinear ítems horizontalmente */
-            align-items: center; /* Centrar contenido verticalmente */
-            justify-content: flex-start; /* Justificar contenido a la izquierda */
-            margin-top: 0.5rem; /* Espacio arriba del código de barras para separarlo de la descripción */
-            line-height: 1; /* Altura de línea compacta */
+        .product-actions {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
         }
-        .barcode-image {
-            width: 60px; /* Ancho del código de barras (50% más pequeño) */
-            height: 25px; /* Altura del código de barras (50% más pequeño) */
-            flex-shrink: 0; /* Evita que el código de barras se encoja */
+        .product-actions input[type="number"] {
+            width: 70px;
+            margin-right: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ced4da;
+            padding: 0.375rem 0.75rem;
         }
-        .barcode-text {
-            font-size: 0.75rem; /* Tamaño de fuente para el texto SKU */
-            color: #495057; /* Color gris oscuro para el texto */
-            font-weight: 500;
-            margin-left: 0.5rem; /* Pequeño espacio entre la imagen y el texto */
+        .product-actions .btn {
+            border-radius: 0.5rem;
+        }
+        .cart-button-container {
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        /* Estilos para el mensaje de confirmación */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #28a745; /* Verde Bootstrap */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            z-index: 1050; /* Por encima de otros elementos */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            font-weight: 600;
+        }
+        .message-box.show {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* Ajustes responsivos para pantallas más pequeñas */
@@ -109,8 +132,8 @@
             .product-description {
                 text-align: center; /* Centrar texto en pantallas pequeñas */
             }
-            .barcode-container {
-                justify-content: center; /* Centrar código de barras en pantallas pequeñas */
+            .product-actions {
+                justify-content: center; /* Centrar acciones en pantallas pequeñas */
             }
         }
     </style>
@@ -135,9 +158,14 @@
                         <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG</h4>
                         <p class="product-price">Precio: ₡3,175.00</p>
                         <p class="product-description">Arena de bentonita para gato con aroma a lavanda, en forma de bolitas de 1-3.5mm y 8kg de peso, ideal para mantener la higiene de tu mascota.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0200579&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0200579</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0200579">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG"
+                                data-product-price="3175.00"
+                                data-product-sku="0200579">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -152,9 +180,14 @@
                         <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG</h4>
                         <p class="product-price">Precio: ₡3,175.00</p>
                         <p class="product-description">Arena de bentonita para gato con aroma a limón, en forma de bolitas de 1-3.5mm y 8kg de peso, que ayuda a neutralizar los olores eficazmente.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0200580&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0200580</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0200580">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG"
+                                data-product-price="3175.00"
+                                data-product-sku="0200580">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -169,9 +202,14 @@
                         <h4 class="product-title">ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG</h4>
                         <p class="product-price">Precio: ₡3,175.00</p>
                         <p class="product-description">Arena de bentonita para gato con aroma a manzana, en forma de bolitas de 1-3.5mm y 8kg de peso, para un ambiente fresco y limpio en casa.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0200581&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0200581</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0200581">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG"
+                                data-product-price="3175.00"
+                                data-product-sku="0200581">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -186,9 +224,14 @@
                         <h4 class="product-title">ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡3,950.00</p>
                         <p class="product-description">Arenero de plástico duradero para gato, incluye pala para facilitar la limpieza, con dimensiones de 47x39x14cm, disponible en varios colores.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0229630&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0229630</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0229630">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO"
+                                data-product-price="3950.00"
+                                data-product-sku="0229630">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -203,9 +246,14 @@
                         <h4 class="product-title">BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,750.00</p>
                         <p class="product-description">Bola de plástico resistente para mascotas, con relieve de hueso, sonido incorporado y asa para un mejor agarre. Medidas: 14x10cm.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0278973&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0278973</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0278973">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO"
+                                data-product-price="1750.00"
+                                data-product-sku="0278973">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -221,9 +269,15 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
                         <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Cómodo bolso transportador de tela para mascota, ligero y resistente, con dimensiones de 29x27x42cm, disponible en variedad de diseños.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253520&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0253520</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253520">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="BOLSO TELA TRANSPORTADOR P/MASCOTA 29X27X42CM SURTIDO"
+                                data-product-price="1875.00"
+                                data-product-original-price="7500.00"
+                                data-product-sku="0253520">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -239,9 +293,15 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
                         <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Bolso de tela para mascotas con ventana de ventilación, de 30x29x42cm, ideal para viajes cortos, surtido en colores.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253519&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0253519</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253519">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="BOLSO TELA TRANSPORTADOR P/MASCOTA C/VENTANA 30X29X42CM SURTIDO"
+                                data-product-price="1875.00"
+                                data-product-original-price="7500.00"
+                                data-product-sku="0253519">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -257,9 +317,15 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡8,500.00</s></p>
                         <p class="product-offer">Oferta: ₡2,125.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Elegante bolso transportador para mascota con detalles de acrílico, en tonos negro y gris, para un transporte seguro y con estilo.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0249343&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0249343</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0249343">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="BOLSO TRANSPORTADOR P/MASCOTA C/DETALLE ACRILICO NEGRO GRIS"
+                                data-product-price="2125.00"
+                                data-product-original-price="8500.00"
+                                data-product-sku="0249343">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -275,9 +341,15 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡6,500.00</s></p>
                         <p class="product-offer">Oferta: ₡1,625.00 (75%) hasta 17/06/2025</p>
                         <p class="product-description">Bolso transportador de tela espacioso, ideal para mascotas más grandes, de 45x22x27cm, disponible en una selección de diseños.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253522&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0253522</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253522">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="BOLSO TRANSPORTADOR TELA P/MASCOTA 45X22X27CM SURTIDO"
+                                data-product-price="1625.00"
+                                data-product-original-price="6500.00"
+                                data-product-sku="0253522">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -293,9 +365,15 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡6,450.00</s></p>
                         <p class="product-offer">Oferta: ₡4,100.00 (36.43%) hasta 08/06/2025</p>
                         <p class="product-description">Cama de tela afelpada con estampado divertido, de 60x60cm, proporciona un descanso suave y acogedor para tu mascota.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0231906&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0231906</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0231906">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="CAMA TELA AFELPADO ESTAMPADO P/MASCOTA 60X60CM SURTIDO"
+                                data-product-price="4100.00"
+                                data-product-original-price="6450.00"
+                                data-product-sku="0231906">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -311,9 +389,15 @@
                         <p class="product-price">Precio: <s class="text-secondary">₡4,975.00</s></p>
                         <p class="product-offer">Oferta: ₡2,975.00 (40.2%) hasta 08/06/2025</p>
                         <p class="product-description">Cama de tela afelpada con estampado para mascota, de 45x45cm, ofrece un lugar cómodo para el descanso de tu amigo peludo.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0231905&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0231905</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0231905">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="CAMA TELA P/MASCOTA AFELPADA C/ESTAMPADO 45X45CM SURTIDO"
+                                data-product-price="2975.00"
+                                data-product-original-price="4975.00"
+                                data-product-sku="0231905">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -328,9 +412,14 @@
                         <h4 class="product-title">CAMA TELA P/MASCOTA ESTAMPADO HUESO AFELPADO 70X50X15CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡7,500.00</p>
                         <p class="product-description">Cama de tela afelpada con estampado de hueso, de 70x50x15cm, proporciona un espacio amplio y suave para tu mascota.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0231917&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0231917</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0231917">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="CAMA TELA P/MASCOTA ESTAMPADO HUESO AFELPADO 70X50X15CM SURTIDO"
+                                data-product-price="7500.00"
+                                data-product-sku="0231917">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -345,9 +434,14 @@
                         <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 19.5X11.5CM ROJO</h4>
                         <p class="product-price">Precio: ₡975.00</p>
                         <p class="product-description">Cepillo de plástico rojo de 19.5x11.5cm, ideal para el aseo diario de tu mascota, ayudando a remover el pelo suelto y la suciedad.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0249338&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0249338</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0249338">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="CEPILLO PLASTICO P/MASCOTA 19.5X11.5CM ROJO"
+                                data-product-price="975.00"
+                                data-product-sku="0249338">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -362,9 +456,14 @@
                         <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 7.5X16.5CM NEGRO TURQUESA</h4>
                         <p class="product-price">Precio: ₡3,450.00</p>
                         <p class="product-description">Cepillo de plástico en color negro y turquesa de 7.5x16.5cm, diseñado para un cepillado suave y eficiente en mascotas de todo tipo de pelaje.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0254632&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0254632</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0254632">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="CEPILLO PLASTICO P/MASCOTA 7.5X16.5CM NEGRO TURQUESA"
+                                data-product-price="3450.00"
+                                data-product-sku="0254632">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -379,9 +478,14 @@
                         <h4 class="product-title">COBIJA P/MASCOTA ESTAMPADO 70X100CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,075.00</p>
                         <p class="product-description">Suave cobija estampada para mascota de 70x100cm, ideal para mantener a tu compañero cálido y cómodo en cualquier superficie.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0272976&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0272976</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0272976">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="COBIJA P/MASCOTA ESTAMPADO 70X100CM SURTIDO"
+                                data-product-price="1075.00"
+                                data-product-sku="0272976">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -396,9 +500,14 @@
                         <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.0CM MULTICOLOR SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Collar liso ajustable para mascota de 2.0cm, disponible en un surtido de colores vibrantes, perfecto para el uso diario.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247108&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0247108</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247108">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="COLLAR P/MASCOTA LISO AJUSTABLE 2.0CM MULTICOLOR SURTIDO"
+                                data-product-price="1500.00"
+                                data-product-sku="0247108">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -413,9 +522,14 @@
                         <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.5CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,975.00</p>
                         <p class="product-description">Collar liso ajustable para mascota de 2.5cm, disponible en un surtido de colores, que ofrece durabilidad y confort para tu mascota.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247112&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0247112</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247112">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="COLLAR P/MASCOTA LISO AJUSTABLE 2.5CM SURTIDO"
+                                data-product-price="1975.00"
+                                data-product-sku="0247112">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -430,9 +544,14 @@
                         <h4 class="product-title">HUESO PLASTICO P/MASCOTA C/RELIEVE HUELLA SONIDO 16X6CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,250.00</p>
                         <p class="product-description">Hueso de plástico con relieve de huella y sonido, de 16x6cm, ideal para el juego y entretenimiento de tu mascota, disponible en varios diseños.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0278977&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0278977</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0278977">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="HUESO PLASTICO P/MASCOTA C/RELIEVE HUELLA SONIDO 16X6CM SURTIDO"
+                                data-product-price="1250.00"
+                                data-product-sku="0278977">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -447,9 +566,14 @@
                         <h4 class="product-title">HUESO PLASTICO P/MASCOTA LISO+RELIEVE C/SONIDO 16X8CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Hueso de plástico liso con relieve y sonido, de 16x8cm, un juguete duradero y divertido para mantener a tu mascota activa y feliz.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0278972&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0278972</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0278972">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="HUESO PLASTICO P/MASCOTA LISO+RELIEVE C/SONIDO 16X8CM SURTIDO"
+                                data-product-price="1500.00"
+                                data-product-sku="0278972">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -464,9 +588,14 @@
                         <h4 class="product-title">PAD ABSORBENTE P/MASCOTA 5 CAPAS 60X60 50UND</h4>
                         <p class="product-price">Precio: ₡3,950.00</p>
                         <p class="product-description">Pad absorbente de 5 capas para mascotas, de 60x60cm, paquete de 50 unidades, ideal para el entrenamiento de cachorros o mascotas mayores.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0273630&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0273630</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0273630">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="PAD ABSORBENTE P/MASCOTA 5 CAPAS 60X60 50UND"
+                                data-product-price="3950.00"
+                                data-product-sku="0273630">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -481,9 +610,14 @@
                         <h4 class="product-title">PECHERA P/MASCOTA C/FRANJA REFLECTIVA AJUSTABLE BICOLOR SURTIDO</h4>
                         <p class="product-price">Precio: ₡6,000.00</p>
                         <p class="product-description">Pechera para mascota con franja reflectiva, ajustable y bicolor, disponible en surtido, ideal para paseos seguros durante la noche.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247094&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0247094</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247094">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="PECHERA P/MASCOTA C/FRANJA REFLECTIVA AJUSTABLE BICOLOR SURTIDO"
+                                data-product-price="6000.00"
+                                data-product-sku="0247094">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -498,9 +632,14 @@
                         <h4 class="product-title">PELUCHE ANIMAL P/MASCOTA 23X8CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,200.00</p>
                         <p class="product-description">Peluche con forma de animal para mascota, de 23x8cm, disponible en un surtido de simpáticos diseños, perfecto para jugar y morder.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0250469&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0250469</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0250469">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="PELUCHE ANIMAL P/MASCOTA 23X8CM SURTIDO"
+                                data-product-price="1200.00"
+                                data-product-sku="0250469">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -515,9 +654,14 @@
                         <h4 class="product-title">TAZA METALICA C/BASE PLASTICA P/MASCOTA C/RELIEVE RAYAS 33X18X5.5CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡3,500.00</p>
                         <p class="product-description">Taza metálica con base plástica y relieve de rayas, de 33x18x5.5cm, ideal para el agua o la comida de tu mascota, surtida.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0279402&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0279402</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0279402">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA METALICA C/BASE PLASTICA P/MASCOTA C/RELIEVE RAYAS 33X18X5.5CM SURTIDO"
+                                data-product-price="3500.00"
+                                data-product-sku="0279402">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -532,9 +676,14 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA ANTIDESLIZANTE 18CM PLATEADO NEGRO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Taza metálica antideslizante para mascota de 18cm, en tonos plateado y negro, que asegura estabilidad al comer o beber.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0216849&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0216849</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0216849">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA METALICA P/MASCOTA ANTIDESLIZANTE 18CM PLATEADO NEGRO"
+                                data-product-price="1500.00"
+                                data-product-sku="0216849">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -549,9 +698,14 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA ESTAMPADO HUELLA+HUESO ANTIDESLIZANTE 14CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡2,750.00</p>
                         <p class="product-description">Taza metálica con estampado de huella y hueso, antideslizante y de 14cm, disponible en surtido, para una alimentación divertida y segura.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0247215&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0247215</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247215">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA METALICA P/MASCOTA ESTAMPADO HUELLA+HUESO ANTIDESLIZANTE 14CM SURTIDO"
+                                data-product-price="2750.00"
+                                data-product-sku="0247215">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -566,9 +720,14 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA LISA+DETALLE RELIEVE HUELLA 22CM PLATEADO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Taza metálica lisa con detalle de relieve de huella, de 22cm en color plateado, un diseño elegante y funcional para tu mascota.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253758&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0253758</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253758">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA METALICA P/MASCOTA LISA+DETALLE RELIEVE HUELLA 22CM PLATEADO"
+                                data-product-price="1500.00"
+                                data-product-sku="0253758">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -583,9 +742,14 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO 14CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,750.00</p>
                         <p class="product-description">Taza metálica lisa con estampado, de 14cm, disponible en surtido, ideal para la alimentación diaria de tu mascota con un toque de estilo.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253762&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0253762</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253762">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA METALICA P/MASCOTA LISA ESTAMPADO 14CM SURTIDO"
+                                data-product-price="1750.00"
+                                data-product-sku="0253762">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -600,9 +764,14 @@
                         <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO HUELLA 18CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡1,500.00</p>
                         <p class="product-description">Taza metálica lisa con estampado de huella, de 18cm, disponible en surtido, para una comida más amena y organizada.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0253766&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0253766</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253766">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA METALICA P/MASCOTA LISA ESTAMPADO HUELLA 18CM SURTIDO"
+                                data-product-price="1500.00"
+                                data-product-sku="0253766">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -617,9 +786,14 @@
                         <h4 class="product-title">TAZA PLASTICA P/MASCOTA LISA 8.3X24.8X25.6CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡950.00</p>
                         <p class="product-description">Taza plástica lisa para mascota, de 8.3x24.8x25.6cm, disponible en surtido, ligera y fácil de limpiar, ideal para uso diario.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0265334&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0265334</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0265334">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA PLASTICA P/MASCOTA LISA 8.3X24.8X25.6CM SURTIDO"
+                                data-product-price="950.00"
+                                data-product-sku="0265334">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -634,9 +808,14 @@
                         <h4 class="product-title">TAZA PLASTICA P/MASCOTA OVALADA LISA 13.8X10.1X8.1CM SURTIDO</h4>
                         <p class="product-price">Precio: ₡950.00</p>
                         <p class="product-description">Taza plástica ovalada lisa para mascota, de 13.8x10.1x8.1cm, disponible en surtido, con un diseño práctico y moderno.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0279418&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0279418</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0279418">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TAZA PLASTICA P/MASCOTA OVALADA LISA 13.8X10.1X8.1CM SURTIDO"
+                                data-product-price="950.00"
+                                data-product-sku="0279418">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -651,9 +830,14 @@
                         <h4 class="product-title">TOALLA HUMEDA P/MASCOTA 100UND AZUL+BLANCO</h4>
                         <p class="product-price">Precio: ₡950.00</p>
                         <p class="product-description">Toallas húmedas para mascota, 100 unidades en colores azul y blanco, ideales para una limpieza rápida y efectiva, dejando a tu mascota fresca.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0249265&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0249265</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0249265">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="TOALLA HUMEDA P/MASCOTA 100UND AZUL+BLANCO"
+                                data-product-price="950.00"
+                                data-product-sku="0249265">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -668,17 +852,107 @@
                         <h4 class="product-title">PRODUCTO ADICIONAL EJEMPLO (SKU GENÉRICO)</h4>
                         <p class="product-price">Precio: ₡1,000.00</p>
                         <p class="product-description">Este es un producto de ejemplo para completar los 32 artículos. Puedes reemplazarlo con tu artículo real si lo tienes.</p>
-                        <div class="barcode-container">
-                            <img src="https://barcode.tec-it.com/barcode.ashx?data=0999999&code=Code128&dpi=96&showHRI=False" alt="Código de Barras" class="barcode-image">
-                            <p class="barcode-text">SKU: 0999999</p>
+                        <div class="product-actions">
+                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0999999">
+                            <button class="btn btn-primary add-to-cart-btn"
+                                data-product-name="PRODUCTO ADICIONAL EJEMPLO (SKU GENÉRICO)"
+                                data-product-price="1000.00"
+                                data-product-sku="0999999">
+                                Añadir a la lista
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="cart-button-container">
+            <button id="viewCartBtn" class="btn btn-success btn-lg">Ver lista y enviar por WhatsApp</button>
+        </div>
     </main>
+
+    <!-- Mensaje de confirmación (custom, no alert) -->
+    <div id="messageBox" class="message-box"></div>
 
     <!-- Bootstrap JS CDN (Bundle includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const shoppingList = [];
+        const whatsappNumber = "50670266841"; // Número de WhatsApp para Costa Rica
+
+        // Función para mostrar el mensaje de confirmación
+        function showMessage(message, type = 'success') {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.className = `message-box show bg-${type}`; // Añadir clase de Bootstrap para el tipo de mensaje
+            setTimeout(() => {
+                messageBox.className = `message-box`; // Ocultar después de 3 segundos
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            const viewCartBtn = document.getElementById('viewCartBtn');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const productName = event.target.dataset.productName;
+                    const productPrice = parseFloat(event.target.dataset.productPrice);
+                    const productSku = event.target.dataset.productSku;
+                    const quantityInput = event.target.closest('.product-actions').querySelector('.quantity-input');
+                    let quantity = parseInt(quantityInput.value);
+
+                    if (isNaN(quantity) || quantity <= 0) {
+                        showMessage('La cantidad debe ser al menos 1.', 'danger');
+                        return;
+                    }
+
+                    // Buscar si el producto ya está en la lista
+                    const existingItemIndex = shoppingList.findIndex(item => item.sku === productSku);
+
+                    if (existingItemIndex > -1) {
+                        // Si existe, actualizar la cantidad
+                        shoppingList[existingItemIndex].quantity += quantity;
+                        showMessage(`${quantity} unidad(es) de ${productName} añadida(s) de nuevo a la lista. Cantidad total: ${shoppingList[existingItemIndex].quantity}`, 'info');
+                    } else {
+                        // Si no existe, añadir nuevo producto
+                        shoppingList.push({
+                            name: productName,
+                            price: productPrice,
+                            sku: productSku,
+                            quantity: quantity
+                        });
+                        showMessage(`"${productName}" añadido a la lista.`, 'success');
+                    }
+                    console.log('Lista de compras actual:', shoppingList);
+                });
+            });
+
+            viewCartBtn.addEventListener('click', () => {
+                if (shoppingList.length === 0) {
+                    showMessage('Tu lista de compras está vacía.', 'warning');
+                    return;
+                }
+
+                let total = 0;
+                let shoppingListText = "¡Hola! Mi lista de compras de mascotas es la siguiente:\n\n";
+
+                shoppingList.forEach((item, index) => {
+                    const itemTotal = item.quantity * item.price;
+                    total += itemTotal;
+                    shoppingListText += `${index + 1}. ${item.name} (SKU: ${item.sku})\n   Cantidad: ${item.quantity} x ₡${item.price.toFixed(2)} = ₡${itemTotal.toFixed(2)}\n`;
+                });
+
+                shoppingListText += `\nTotal estimado: ₡${total.toFixed(2)}`;
+
+                // Codificar el texto para la URL de WhatsApp
+                const encodedText = encodeURIComponent(shoppingListText);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+                // Abrir WhatsApp en una nueva pestaña
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+    </script>
 </body>
 </html>
