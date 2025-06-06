@@ -11,62 +11,62 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Light gray background */
+            background-color: #f8f9fa; /* Fondo gris claro */
         }
         .product-card {
             background-color: #ffffff;
-            border-radius: 1rem; /* Rounded corners */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Soft shadow */
-            margin-bottom: 1.5rem; /* Space between cards */
+            border-radius: 1rem; /* Esquinas redondeadas */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin-bottom: 1.5rem; /* Espacio entre tarjetas */
             padding: 1.5rem;
-            display: flex; /* For aligning media section and text */
-            align-items: flex-start; /* Align flex items to the start (top) */
+            display: flex; /* Para alinear sección de medios y texto */
+            align-items: flex-start; /* Alinea los ítems flex al inicio (arriba) */
         }
         .product-media {
-            flex-shrink: 0; /* Prevent this container from shrinking */
-            margin-right: 1.5rem; /* Space to the right of the media section */
-            text-align: center; /* Center the image within this section */
+            flex-shrink: 0; /* Evita que este contenedor se encoja */
+            margin-right: 1.5rem; /* Espacio a la derecha de la sección de medios */
+            text-align: center; /* Centra la imagen dentro de esta sección */
         }
         .product-image {
-            width: 150px; /* Fixed width for images */
-            height: 150px; /* Fixed height for images */
-            object-fit: cover; /* Ensure image covers the area */
-            border-radius: 0.75rem; /* Rounded borders for the image */
-            display: block; /* Ensure image behaves as a block for margin */
-            margin: 0 auto; /* Center the image */
+            width: 150px; /* Ancho fijo para las imágenes */
+            height: 150px; /* Altura fija para las imágenes */
+            object-fit: cover; /* Para asegurar que la imagen cubra el área */
+            border-radius: 0.75rem; /* Bordes redondeados para la imagen */
+            display: block; /* Asegura que la imagen se comporte como un bloque para el margen */
+            margin: 0 auto; /* Centra la imagen */
         }
         .product-content {
-            flex-grow: 1; /* Allow content to grow */
+            flex-grow: 1; /* Permite que el contenido crezca */
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center text vertically (if needed) */
+            justify-content: center; /* Justificar el texto al centro verticalmente (si es necesario) */
         }
         .product-title {
-            font-size: 1.35rem; /* Larger title */
-            font-weight: 700; /* Bold */
-            color: #343a40; /* Dark color for title */
+            font-size: 1.35rem; /* Título más grande */
+            font-weight: 700; /* Negrita */
+            color: #343a40; /* Color oscuro para el título */
             margin-bottom: 0.5rem;
         }
         .product-price {
-            font-size: 1.2rem; /* Slightly larger price */
-            font-weight: 600; /* Bold */
-            color: #007bff; /* Blue color for price */
-            margin-bottom: 0.5rem; /* Space below price */
+            font-size: 1.2rem; /* Precio ligeramente más grande */
+            font-weight: 600; /* Negrita */
+            color: #007bff; /* Color azul para el precio */
+            margin-bottom: 0.5rem; /* Espacio debajo del precio */
         }
         .product-offer {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #dc3545; /* Vibrant red color for offers */
-            margin-bottom: 0.5rem; /* Space below offer */
+            color: #dc3545; /* Color rojo vibrante para ofertas */
+            margin-bottom: 0.5rem; /* Espacio debajo de la oferta */
         }
         .product-description {
             font-size: 0.95rem;
-            color: #6c757d; /* Gray color for description */
-            text-align: justify; /* Justify text */
-            margin-bottom: 0.75rem; /* Space below description, before QR */
+            color: #6c757d; /* Color gris para la descripción */
+            text-align: justify; /* Justificar el texto */
+            margin-bottom: 0.75rem; /* Espacio debajo de la descripción, antes del QR */
         }
         .header {
-            background-color: #007bff; /* Bootstrap primary blue */
+            background-color: #007bff; /* Azul primario de Bootstrap */
             color: white;
             padding: 2rem 0;
             margin-bottom: 2rem;
@@ -75,44 +75,42 @@
             box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
         }
         .qr-code-container {
-            /* Now inside product-content, so align to left */
-            text-align: left;
-            margin-top: 0.5rem; /* Space above QR code to separate from description */
-            line-height: 1; /* Compact line height */
+            display: flex; /* Usar flexbox para alinear ítems horizontalmente */
+            align-items: center; /* Centrar contenido verticalmente */
+            justify-content: flex-start; /* Justificar contenido a la izquierda */
+            margin-top: 0.5rem; /* Espacio arriba del QR para separarlo de la descripción */
+            line-height: 1; /* Altura de línea compacta */
         }
         .qr-code-image {
-            width: 40px; /* Smaller width for QR code image */
-            height: 40px; /* Smaller height for QR code */
-            display: inline-block; /* Allows text to flow next to it if needed, but not here */
-            vertical-align: middle; /* Align image with text vertically */
+            width: 40px; /* Ancho del QR */
+            height: 40px; /* Altura del QR */
+            flex-shrink: 0; /* Evita que el QR se encoja */
         }
         .qr-code-text {
-            font-size: 0.75rem; /* Smaller font size for SKU text */
-            color: #495057; /* Darker gray for text */
+            font-size: 0.75rem; /* Tamaño de fuente para el texto SKU */
+            color: #495057; /* Color gris oscuro para el texto */
             font-weight: 500;
-            display: inline-block; /* Keep text next to QR on one line if space permits */
-            margin-left: 0.5rem; /* Small space between image and text */
-            vertical-align: middle; /* Align text with image vertically */
+            margin-left: 0.5rem; /* Pequeño espacio entre la imagen y el texto */
         }
 
-        /* Responsive adjustments for smaller screens */
+        /* Ajustes responsivos para pantallas más pequeñas */
         @media (max-width: 767.98px) {
             .product-card {
-                flex-direction: column; /* Stack image and text on small screens */
+                flex-direction: column; /* Apilar imagen y texto en pantallas pequeñas */
                 text-align: center;
             }
             .product-media {
                 margin-right: 0;
-                margin-bottom: 1rem; /* Space below media section */
+                margin-bottom: 1rem; /* Espacio debajo de la sección de medios */
             }
             .product-title,
             .product-price,
             .product-offer,
             .product-description {
-                text-align: center; /* Center text on small screens */
+                text-align: center; /* Centrar texto en pantallas pequeñas */
             }
             .qr-code-container {
-                text-align: center; /* Center QR code on small screens */
+                justify-content: center; /* Centrar QR en pantallas pequeñas */
             }
         }
     </style>
@@ -131,7 +129,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/AEC6CF/FFFFFF?text=ARENA" alt="Imagen de Arena Bentonita" class="product-image">
+                        <img src="https://placehold.co/150x150/AEC6CF/FFFFFF?text=ARENA" alt="Imagen de Arena Bentonita Lavanda" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG</h4>
@@ -148,7 +146,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/FFDDC1/333333?text=ARENA" alt="Imagen de Arena Bentonita" class="product-image">
+                        <img src="https://placehold.co/150x150/FFDDC1/333333?text=ARENA" alt="Imagen de Arena Bentonita Limón" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG</h4>
@@ -165,7 +163,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/CCE2CB/333333?text=ARENA" alt="Imagen de Arena Bentonita" class="product-image">
+                        <img src="https://placehold.co/150x150/CCE2CB/333333?text=ARENA" alt="Imagen de Arena Bentonita Manzana" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG</h4>
@@ -182,7 +180,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/FFC9C9/333333?text=ARENERO" alt="Imagen de Arenero" class="product-image">
+                        <img src="https://placehold.co/150x150/FFC9C9/333333?text=ARENERO" alt="Imagen de Arenero con Pala" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO</h4>
@@ -200,10 +198,6 @@
                 <div class="product-card">
                     <div class="product-media">
                         <img src="https://placehold.co/150x150/B8DEE8/333333?text=BOLA" alt="Imagen de Bola de Juguete" class="product-image">
-                        <div class="qr-code-container">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 278973" alt="Código QR SKU: 278973" class="qr-code-image">
-                            <p class="qr-code-text">SKU: 278973</p>
-                        </div>
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO</h4>
@@ -238,7 +232,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/ADD8E6/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                        <img src="https://placehold.co/150x150/ADD8E6/333333?text=BOLSO" alt="Imagen de Bolso Transportador con Ventana" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">BOLSO TELA TRANSPORTADOR P/MASCOTA C/VENTANA 30X29X42CM SURTIDO</h4>
@@ -256,7 +250,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/87CEEB/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                        <img src="https://placehold.co/150x150/87CEEB/333333?text=BOLSO" alt="Imagen de Bolso Transportador Acrílico" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">BOLSO TRANSPORTADOR P/MASCOTA C/DETALLE ACRILICO NEGRO GRIS</h4>
@@ -274,7 +268,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/6495ED/333333?text=BOLSO" alt="Imagen de Bolso Transportador" class="product-image">
+                        <img src="https://placehold.co/150x150/6495ED/333333?text=BOLSO" alt="Imagen de Bolso Transportador Grande" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">BOLSO TRANSPORTADOR TELA P/MASCOTA 45X22X27CM SURTIDO</h4>
@@ -292,7 +286,7 @@
             <div class="col-12 col-md-6">
                 <div class="product-card">
                     <div class="product-media">
-                        <img src="https://placehold.co/150x150/4682B4/333333?text=CAMA" alt="Imagen de Cama para Mascota" class="product-image">
+                        <img src="https://placehold.co/150x150/4682B4/333333?text=CAMA" alt="Imagen de Cama Afelpada 60x60cm" class="product-image">
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">CAMA TELA AFELPADO ESTAMPADO P/MASCOTA 60X60CM SURTIDO</h4>
@@ -302,6 +296,364 @@
                         <div class="qr-code-container">
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 231906" alt="Código QR SKU: 231906" class="qr-code-image">
                             <p class="qr-code-text">SKU: 231906</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 11 (con oferta) -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/98FB98/333333?text=CAMA" alt="Imagen de Cama Afelpada 45x45cm" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">CAMA TELA P/MASCOTA AFELPADA C/ESTAMPADO 45X45CM SURTIDO</h4>
+                        <p class="product-price">Precio: <s class="text-secondary">₡4,975.00</s></p>
+                        <p class="product-offer">Oferta: ₡2,975.00 (40.2%) hasta 08/06/2025</p>
+                        <p class="product-description">Cama de tela afelpada con estampado para mascota, de 45x45cm, ofrece un lugar cómodo para el descanso de tu amigo peludo.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 231905" alt="Código QR SKU: 231905" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 231905</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 12 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/87CEEB/333333?text=CAMA" alt="Imagen de Cama Hueso Afelpado" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">CAMA TELA P/MASCOTA ESTAMPADO HUESO AFELPADO 70X50X15CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡7,500.00</p>
+                        <p class="product-description">Cama de tela afelpada con estampado de hueso, de 70x50x15cm, proporciona un espacio amplio y suave para tu mascota.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 231917" alt="Código QR SKU: 231917" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 231917</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 13 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/FF6347/333333?text=CEPILLO" alt="Imagen de Cepillo Plástico Rojo" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 19.5X11.5CM ROJO</h4>
+                        <p class="product-price">Precio: ₡975.00</p>
+                        <p class="product-description">Cepillo de plástico rojo de 19.5x11.5cm, ideal para el aseo diario de tu mascota, ayudando a remover el pelo suelto y la suciedad.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 249338" alt="Código QR SKU: 249338" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 249338</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 14 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/40E0D0/333333?text=CEPILLO" alt="Imagen de Cepillo Plástico Negro Turquesa" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 7.5X16.5CM NEGRO TURQUESA</h4>
+                        <p class="product-price">Precio: ₡3,450.00</p>
+                        <p class="product-description">Cepillo de plástico en color negro y turquesa de 7.5x16.5cm, diseñado para un cepillado suave y eficiente en mascotas de todo tipo de pelaje.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 254632" alt="Código QR SKU: 254632" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 254632</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 15 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/FFD700/333333?text=COBIJA" alt="Imagen de Cobija Estampada" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">COBIJA P/MASCOTA ESTAMPADO 70X100CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,075.00</p>
+                        <p class="product-description">Suave cobija estampada para mascota de 70x100cm, ideal para mantener a tu compañero cálido y cómodo en cualquier superficie.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 272976" alt="Código QR SKU: 272976" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 272976</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 16 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/8A2BE2/FFFFFF?text=COLLAR" alt="Imagen de Collar Multiclolor" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.0CM MULTICOLOR SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,500.00</p>
+                        <p class="product-description">Collar liso ajustable para mascota de 2.0cm, disponible en un surtido de colores vibrantes, perfecto para el uso diario.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247108" alt="Código QR SKU: 247108" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 247108</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 17 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/DA70D6/333333?text=COLLAR" alt="Imagen de Collar Ajustable" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.5CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,975.00</p>
+                        <p class="product-description">Collar liso ajustable para mascota de 2.5cm, disponible en un surtido de colores, que ofrece durabilidad y confort para tu mascota.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247112" alt="Código QR SKU: 247112" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 247112</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 18 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/FFA07A/333333?text=HUESO" alt="Imagen de Hueso Plástico con Sonido" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">HUESO PLASTICO P/MASCOTA C/RELIEVE HUELLA SONIDO 16X6CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,250.00</p>
+                        <p class="product-description">Hueso de plástico con relieve de huella y sonido, de 16x6cm, ideal para el juego y entretenimiento de tu mascota, disponible en varios diseños.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 278977" alt="Código QR SKU: 278977" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 278977</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 19 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/FF7F50/FFFFFF?text=HUESO" alt="Imagen de Hueso Plástico Liso" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">HUESO PLASTICO P/MASCOTA LISO+RELIEVE C/SONIDO 16X8CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,500.00</p>
+                        <p class="product-description">Hueso de plástico liso con relieve y sonido, de 16x8cm, un juguete duradero y divertido para mantener a tu mascota activa y feliz.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 278972" alt="Código QR SKU: 278972" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 278972</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 20 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/C6E2EE/333333?text=PAD" alt="Imagen de Pad Absorbente" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">PAD ABSORBENTE P/MASCOTA 5 CAPAS 60X60 50UND</h4>
+                        <p class="product-price">Precio: ₡3,950.00</p>
+                        <p class="product-description">Pad absorbente de 5 capas para mascotas, de 60x60cm, paquete de 50 unidades, ideal para el entrenamiento de cachorros o mascotas mayores.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 273630" alt="Código QR SKU: 273630" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 273630</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 21 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/FFDDAA/333333?text=PECHERA" alt="Imagen de Pechera Reflectiva" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">PECHERA P/MASCOTA C/FRANJA REFLECTIVA AJUSTABLE BICOLOR SURTIDO</h4>
+                        <p class="product-price">Precio: ₡6,000.00</p>
+                        <p class="product-description">Pechera para mascota con franja reflectiva, ajustable y bicolor, disponible en surtido, ideal para paseos seguros durante la noche.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247094" alt="Código QR SKU: 247094" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 247094</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 22 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/AFEEEE/333333?text=PELUCHE" alt="Imagen de Peluche Animal" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">PELUCHE ANIMAL P/MASCOTA 23X8CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,200.00</p>
+                        <p class="product-description">Peluche con forma de animal para mascota, de 23x8cm, disponible en un surtido de simpáticos diseños, perfecto para jugar y morder.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 250469" alt="Código QR SKU: 250469" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 250469</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 23 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/DDA0DD/333333?text=TAZA" alt="Imagen de Taza Metálica con Base" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA METALICA C/BASE PLASTICA P/MASCOTA C/RELIEVE RAYAS 33X18X5.5CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡3,500.00</p>
+                        <p class="product-description">Taza metálica con base plástica y relieve de rayas, de 33x18x5.5cm, ideal para el agua o la comida de tu mascota, surtida.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 279402" alt="Código QR SKU: 279402" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 279402</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 24 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/D3D3D3/333333?text=TAZA" alt="Imagen de Taza Metálica Antideslizante" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA METALICA P/MASCOTA ANTIDESLIZANTE 18CM PLATEADO NEGRO</h4>
+                        <p class="product-price">Precio: ₡1,500.00</p>
+                        <p class="product-description">Taza metálica antideslizante para mascota de 18cm, en tonos plateado y negro, que asegura estabilidad al comer o beber.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 216849" alt="Código QR SKU: 216849" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 216849</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 25 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/B0C4DE/333333?text=TAZA" alt="Imagen de Taza Metálica Estampada" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA METALICA P/MASCOTA ESTAMPADO HUELLA+HUESO ANTIDESLIZANTE 14CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡2,750.00</p>
+                        <p class="product-description">Taza metálica con estampado de huella y hueso, antideslizante y de 14cm, disponible en surtido, para una alimentación divertida y segura.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 247215" alt="Código QR SKU: 247215" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 247215</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 26 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/8470FF/333333?text=TAZA" alt="Imagen de Taza Metálica con Detalle" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA METALICA P/MASCOTA LISA+DETALLE RELIEVE HUELLA 22CM PLATEADO</h4>
+                        <p class="product-price">Precio: ₡1,500.00</p>
+                        <p class="product-description">Taza metálica lisa con detalle de relieve de huella, de 22cm en color plateado, un diseño elegante y funcional para tu mascota.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253758" alt="Código QR SKU: 253758" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 253758</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 27 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/ADD8E6/333333?text=TAZA" alt="Imagen de Taza Metálica Lisa" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO 14CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,750.00</p>
+                        <p class="product-description">Taza metálica lisa con estampado, de 14cm, disponible en surtido, ideal para la alimentación diaria de tu mascota con un toque de estilo.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253762" alt="Código QR SKU: 253762" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 253762</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 28 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/B0E0E6/333333?text=TAZA" alt="Imagen de Taza Metálica con Huella" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO HUELLA 18CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡1,500.00</p>
+                        <p class="product-description">Taza metálica lisa con estampado de huella, de 18cm, disponible en surtido, para una comida más amena y organizada.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 253766" alt="Código QR SKU: 253766" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 253766</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 29 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/AEC6CF/FFFFFF?text=TAZA" alt="Imagen de Taza Plástica Lisa" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA PLASTICA P/MASCOTA LISA 8.3X24.8X25.6CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡950.00</p>
+                        <p class="product-description">Taza plástica lisa para mascota, de 8.3x24.8x25.6cm, disponible en surtido, ligera y fácil de limpiar, ideal para uso diario.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 265334" alt="Código QR SKU: 265334" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 265334</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 30 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/ADD8E6/333333?text=TAZA" alt="Imagen de Taza Plástica Ovalada" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TAZA PLASTICA P/MASCOTA OVALADA LISA 13.8X10.1X8.1CM SURTIDO</h4>
+                        <p class="product-price">Precio: ₡950.00</p>
+                        <p class="product-description">Taza plástica ovalada lisa para mascota, de 13.8x10.1x8.1cm, disponible en surtido, con un diseño práctico y moderno.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 279418" alt="Código QR SKU: 279418" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 279418</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 31 -->
+            <div class="col-12 col-md-6">
+                <div class="product-card">
+                    <div class="product-media">
+                        <img src="https://placehold.co/150x150/FFDDC1/333333?text=TOALLA" alt="Imagen de Toalla Húmeda" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h4 class="product-title">TOALLA HUMEDA P/MASCOTA 100UND AZUL+BLANCO</h4>
+                        <p class="product-price">Precio: ₡950.00</p>
+                        <p class="product-description">Toallas húmedas para mascota, 100 unidades en colores azul y blanco, ideales para una limpieza rápida y efectiva, dejando a tu mascota fresca.</p>
+                        <div class="qr-code-container">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=SKU: 249265" alt="Código QR SKU: 249265" class="qr-code-image">
+                            <p class="qr-code-text">SKU: 249265</p>
                         </div>
                     </div>
                 </div>
