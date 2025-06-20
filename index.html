@@ -3,934 +3,1184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Mascotas - Junio</title>
-    <!-- Bootstrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Catálogo de Jardinería</title>
+    <!-- Bootstrap CSS CDN para un estilo moderno y responsivo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para íconos (como el de WhatsApp) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
+        /* Estilos generales del cuerpo */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Fondo gris claro */
-        }
-        .product-card {
-            background-color: #ffffff;
-            border-radius: 1rem; /* Esquinas redondeadas */
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra suave */
-            margin-bottom: 1.5rem; /* Espacio entre tarjetas */
-            padding: 1.5rem;
-            display: flex; /* Para alinear sección de medios y texto */
-            align-items: flex-start; /* Alinea los ítems flex al inicio (arriba) */
-        }
-        .product-media {
-            flex-shrink: 0; /* Evita que este contenedor se encoja */
-            margin-right: 1.5rem; /* Espacio a la derecha de la sección de medios */
-            text-align: center; /* Centra la imagen dentro de esta sección */
-        }
-        .product-image {
-            width: 150px; /* Ancho fijo para las imágenes */
-            height: 150px; /* Altura fija para las imágenes */
-            object-fit: cover; /* Para asegurar que la imagen cubra el área */
-            border-radius: 0.75rem; /* Bordes redondeados para la imagen */
-            display: block; /* Asegura que la imagen se comporte como un bloque para el margen */
-            margin: 0 auto; /* Centra la imagen */
-        }
-        .product-content {
-            flex-grow: 1; /* Permite que el contenido crezca */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Justificar el texto al centro verticalmente (si es necesario) */
-        }
-        .product-title {
-            font-size: 1.35rem; /* Título más grande */
-            font-weight: 700; /* Negrita */
-            color: #343a40; /* Color oscuro para el título */
-            margin-bottom: 0.5rem;
-        }
-        .product-price {
-            font-size: 1.2rem; /* Precio ligeramente más grande */
-            font-weight: 600; /* Negrita */
-            color: #007bff; /* Color azul para el precio */
-            margin-bottom: 0.5rem; /* Espacio debajo del precio */
-        }
-        .product-offer {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #dc3545; /* Color rojo vibrante para ofertas */
-            margin-bottom: 0.5rem; /* Espacio debajo de la oferta */
-        }
-        .product-description {
-            font-size: 0.95rem;
-            color: #6c757d; /* Color gris para la descripción */
-            text-align: justify; /* Justificar el texto */
-            margin-bottom: 0.75rem; /* Espacio debajo de la descripción */
-        }
-        .header {
-            background-color: #007bff; /* Azul primario de Bootstrap */
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-        }
-        .product-actions {
-            display: flex;
-            align-items: center;
-            margin-top: 1rem;
-        }
-        .product-actions input[type="number"] {
-            width: 70px;
-            margin-right: 0.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid #ced4da;
-            padding: 0.375rem 0.75rem;
-        }
-        .product-actions .btn {
-            border-radius: 0.5rem;
-        }
-        .cart-button-container {
-            text-align: center;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-        /* Estilos para el mensaje de confirmación */
-        .message-box {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #28a745; /* Verde Bootstrap */
-            color: white;
-            padding: 15px 25px;
-            border-radius: 0.75rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-            z-index: 1050; /* Por encima de otros elementos */
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            font-weight: 600;
-        }
-        .message-box.show {
-            opacity: 1;
-            visibility: visible;
+            font-family: 'Inter', sans-serif; /* Usando Inter para un look moderno */
+            background-color: #f0f2f5; /* Fondo gris claro */
+            color: #333;
         }
 
-        /* Ajustes responsivos para pantallas más pequeñas */
-        @media (max-width: 767.98px) {
-            .product-card {
-                flex-direction: column; /* Apilar imagen y texto en pantallas pequeñas */
-                text-align: center;
-            }
-            .product-media {
-                margin-right: 0;
-                margin-bottom: 1rem; /* Espacio debajo de la sección de medios */
-            }
-            .product-title,
-            .product-price,
-            .product-offer,
-            .product-description {
-                text-align: center; /* Centrar texto en pantallas pequeñas */
-            }
-            .product-actions {
-                justify-content: center; /* Centrar acciones en pantallas pequeñas */
-            }
+        /* Barra de navegación - Estilo inspirado en un look de tienda */
+        .navbar {
+            background-color: #007bff; /* Un azul primario para la barra de navegación */
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            color: #ffffff !important;
+            font-weight: bold;
+            font-size: 1.8rem;
+            border-radius: 8px; /* Bordes redondeados */
+            padding: 5px 15px;
+            background-color: #0056b3; /* Un tono más oscuro para el fondo del logo */
+        }
+        .navbar-nav .btn {
+            border-radius: 25px; /* Botones redondeados */
+            padding: 8px 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .btn-view-list {
+            background-color: #28a745; /* Verde para el botón de lista */
+            border-color: #28a745;
+            color: #fff;
+        }
+        .navbar-nav .btn-view-list:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        /* Contenedor principal del catálogo */
+        .container {
+            max-width: 1200px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Título de la sección */
+        h1.text-center {
+            color: #007bff;
+            margin-bottom: 40px;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+
+        /* Estilos del carrusel Swiper */
+        .swiper {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative; /* Necesario para posicionar los botones */
+        }
+
+        /* Altura mínima para los slides del Swiper, ajustado para el contenido de la tarjeta */
+        .swiper-slide {
+            height: auto; /* Permite que la altura se ajuste al contenido de la tarjeta */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Tarjeta de producto individual */
+        .product-card {
+            text-align: center;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out;
+            overflow: hidden;
+            width: 100%; /* La tarjeta ocupa el 100% del ancho de su slide */
+            max-width: 350px; /* Ancho máximo para la tarjeta individual */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 200px; /* Altura fija para las imágenes */
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #eee;
+            flex-shrink: 0;
+        }
+        .product-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #0056b3;
+            min-height: 70px; /* Altura mínima para el título */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-sku {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .product-price {
+            font-size: 1.5em;
+            color: #dc3545;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-promo {
+            color: #fd7e14;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .form-control-quantity {
+            width: 80px;
+            margin: 0 auto 15px auto;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Botones de acción */
+        .btn-add-to-cart {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: auto; /* Empujar el botón hacia abajo */
+        }
+        .btn-add-to-cart:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            transform: translateY(-2px);
+        }
+
+        /* Estilos de los botones de navegación de Swiper */
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: rgba(0,0,0,0.5); /* Color de las flechas */
+            background-color: rgba(255,255,255,0.8); /* Fondo blanco semi-transparente */
+            border-radius: 50%;
+            width: 40px; /* Ancho del botón */
+            height: 40px; /* Alto del botón */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            top: 50%; /* Centrar verticalmente */
+            transform: translateY(-50%);
+        }
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            background-color: rgba(255,255,255,1);
+            color: rgba(0,0,0,0.7);
+        }
+        /* Ajustar el tamaño del ícono dentro del botón */
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            font-size: 1.2rem; /* Tamaño de la flecha */
+            font-weight: bold;
+        }
+
+        /* Paginación de Swiper */
+        .swiper-pagination {
+            bottom: 5px !important; /* Ajustar posición para que no se superponga */
+        }
+        .swiper-pagination-bullet {
+            background-color: #007bff; /* Color de los puntos de paginación */
+            opacity: 0.7;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #0056b3; /* Color del punto activo */
+            opacity: 1;
+        }
+
+
+        /* Estilos del modal del carrito */
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            background-color: #007bff;
+            color: #fff;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .modal-header .btn-close {
+            filter: invert(1); /* Color blanco para el botón de cerrar */
+        }
+        .modal-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        .modal-body ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            color: #555;
+        }
+        .modal-footer .btn {
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .btn-share-whatsapp {
+            background-color: #25D366; /* Color de WhatsApp */
+            border-color: #25D366;
+            color: #fff;
+        }
+        .btn-share-whatsapp:hover {
+            background-color: #1DA851;
+            border-color: #1DA851;
+        }
+
+        /* Pie de página */
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #343a40; /* Gris oscuro */
+            color: #f8f9fa;
+            margin-top: 50px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <header class="header text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Catálogo de Productos para Mascotas</h1>
-            <p class="lead">Las mejores ofertas para tus compañeros peludos</p>
-        </div>
-    </header>
 
-    <main class="container">
-        <div class="row">
-            <!-- Producto 1 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0200579.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/AEC6CF/FFFFFF?text=ARENA';" alt="Imagen de Arena Bentonita Lavanda" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG</h4>
-                        <p class="product-price">Precio: ₡3,175.00</p>
-                        <p class="product-description">Arena de bentonita para gato con aroma a lavanda, en forma de bolitas de 1-3.5mm y 8kg de peso, ideal para mantener la higiene de tu mascota.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0200579">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="ARENA BENTONITA P/GATO C/AROMA LAVANDA FORMA BOLITAS 1-3.5MM 8KG"
-                                data-product-price="3175.00"
-                                data-product-sku="0200579">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 2 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0200580.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFDDC1/333333?text=ARENA';" alt="Imagen de Arena Bentonita Limón" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG</h4>
-                        <p class="product-price">Precio: ₡3,175.00</p>
-                        <p class="product-description">Arena de bentonita para gato con aroma a limón, en forma de bolitas de 1-3.5mm y 8kg de peso, que ayuda a neutralizar los olores eficazmente.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0200580">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="ARENA BENTONITA P/GATO C/AROMA LIMON FORMA BOLITAS 1-3.5MM 8KG"
-                                data-product-price="3175.00"
-                                data-product-sku="0200580">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 3 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0200581.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/CCE2CB/333333?text=ARENA';" alt="Imagen de Arena Bentonita Manzana" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG</h4>
-                        <p class="product-price">Precio: ₡3,175.00</p>
-                        <p class="product-description">Arena de bentonita para gato con aroma a manzana, en forma de bolitas de 1-3.5mm y 8kg de peso, para un ambiente fresco y limpio en casa.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0200581">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="ARENA BENTONITA P/GATO FORMA BOLITAS 1-3.5MM C/AROMA MANZANA 8KG"
-                                data-product-price="3175.00"
-                                data-product-sku="0200581">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 4 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0229630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFC9C9/333333?text=ARENERO';" alt="Imagen de Arenero con Pala" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡3,950.00</p>
-                        <p class="product-description">Arenero de plástico duradero para gato, incluye pala para facilitar la limpieza, con dimensiones de 47x39x14cm, disponible en varios colores.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0229630">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="ARENERO PLASTICO P/GATO C/PALA 47X39X14CM SURTIDO"
-                                data-product-price="3950.00"
-                                data-product-sku="0229630">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 5 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0278973.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/B8DEE8/333333?text=BOLA';" alt="Imagen de Bola de Juguete" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,750.00</p>
-                        <p class="product-description">Bola de plástico resistente para mascotas, con relieve de hueso, sonido incorporado y asa para un mejor agarre. Medidas: 14x10cm.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0278973">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="BOLA PLASTICA P/MASCOTA LISA RELIEVE HUESO C/SONIDO-ASA 14X10CM SURTIDO"
-                                data-product-price="1750.00"
-                                data-product-sku="0278973">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 6 (con oferta) -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0253520.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/B0E0E6/333333?text=BOLSO';" alt="Imagen de Bolso Transportador" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">BOLSO TELA TRANSPORTADOR P/MASCOTA 29X27X42CM SURTIDO</h4>
-                        <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
-                        <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
-                        <p class="product-description">Cómodo bolso transportador de tela para mascota, ligero y resistente, con dimensiones de 29x27x42cm, disponible en variedad de diseños.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253520">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="BOLSO TELA TRANSPORTADOR P/MASCOTA 29X27X42CM SURTIDO"
-                                data-product-price="1875.00"
-                                data-product-original-price="7500.00"
-                                data-product-sku="0253520">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 7 (con oferta) -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0253519.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/ADD8E6/333333?text=BOLSO';" alt="Imagen de Bolso Transportador con Ventana" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">BOLSO TELA TRANSPORTADOR P/MASCOTA C/VENTANA 30X29X42CM SURTIDO</h4>
-                        <p class="product-price">Precio: <s class="text-secondary">₡7,500.00</s></p>
-                        <p class="product-offer">Oferta: ₡1,875.00 (75%) hasta 17/06/2025</p>
-                        <p class="product-description">Bolso de tela para mascotas con ventana de ventilación, de 30x29x42cm, ideal para viajes cortos, surtido en colores.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253519">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="BOLSO TELA TRANSPORTADOR P/MASCOTA C/VENTANA 30X29X42CM SURTIDO"
-                                data-product-price="1875.00"
-                                data-product-original-price="7500.00"
-                                data-product-sku="0253519">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 8 (con oferta) -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0249343.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/87CEEB/333333?text=BOLSO';" alt="Imagen de Bolso Transportador Acrílico" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">BOLSO TRANSPORTADOR P/MASCOTA C/DETALLE ACRILICO NEGRO GRIS</h4>
-                        <p class="product-price">Precio: <s class="text-secondary">₡8,500.00</s></p>
-                        <p class="product-offer">Oferta: ₡2,125.00 (75%) hasta 17/06/2025</p>
-                        <p class="product-description">Elegante bolso transportador para mascota con detalles de acrílico, en tonos negro y gris, para un transporte seguro y con estilo.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0249343">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="BOLSO TRANSPORTADOR P/MASCOTA C/DETALLE ACRILICO NEGRO GRIS"
-                                data-product-price="2125.00"
-                                data-product-original-price="8500.00"
-                                data-product-sku="0249343">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 9 (con oferta) -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0253522.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/6495ED/333333?text=BOLSO';" alt="Imagen de Bolso Transportador Grande" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">BOLSO TRANSPORTADOR TELA P/MASCOTA 45X22X27CM SURTIDO</h4>
-                        <p class="product-price">Precio: <s class="text-secondary">₡6,500.00</s></p>
-                        <p class="product-offer">Oferta: ₡1,625.00 (75%) hasta 17/06/2025</p>
-                        <p class="product-description">Bolso transportador de tela espacioso, ideal para mascotas más grandes, de 45x22x27cm, disponible en una selección de diseños.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253522">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="BOLSO TRANSPORTADOR TELA P/MASCOTA 45X22X27CM SURTIDO"
-                                data-product-price="1625.00"
-                                data-product-original-price="6500.00"
-                                data-product-sku="0253522">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 10 (con oferta) -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0231906.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/4682B4/333333?text=CAMA';" alt="Imagen de Cama Afelpada 60x60cm" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">CAMA TELA AFELPADO ESTAMPADO P/MASCOTA 60X60CM SURTIDO</h4>
-                        <p class="product-price">Precio: <s class="text-secondary">₡6,450.00</s></p>
-                        <p class="product-offer">Oferta: ₡4,100.00 (36.43%) hasta 08/06/2025</p>
-                        <p class="product-description">Cama de tela afelpada con estampado divertido, de 60x60cm, proporciona un descanso suave y acogedor para tu mascota.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0231906">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="CAMA TELA AFELPADO ESTAMPADO P/MASCOTA 60X60CM SURTIDO"
-                                data-product-price="4100.00"
-                                data-product-original-price="6450.00"
-                                data-product-sku="0231906">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 11 (con oferta) -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0231905.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/98FB98/333333?text=CAMA';" alt="Imagen de Cama Afelpada 45x45cm" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">CAMA TELA P/MASCOTA AFELPADA C/ESTAMPADO 45X45CM SURTIDO</h4>
-                        <p class="product-price">Precio: <s class="text-secondary">₡4,975.00</s></p>
-                        <p class="product-offer">Oferta: ₡2,975.00 (40.2%) hasta 08/06/2025</p>
-                        <p class="product-description">Cama de tela afelpada con estampado para mascota, de 45x45cm, ofrece un lugar cómodo para el descanso de tu amigo peludo.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0231905">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="CAMA TELA P/MASCOTA AFELPADA C/ESTAMPADO 45X45CM SURTIDO"
-                                data-product-price="2975.00"
-                                data-product-original-price="4975.00"
-                                data-product-sku="0231905">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 12 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0231917.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/87CEEB/333333?text=CAMA';" alt="Imagen de Cama Hueso Afelpado" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">CAMA TELA P/MASCOTA ESTAMPADO HUESO AFELPADO 70X50X15CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡7,500.00</p>
-                        <p class="product-description">Cama de tela afelpada con estampado de hueso, de 70x50x15cm, proporciona un espacio amplio y suave para tu mascota.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0231917">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="CAMA TELA P/MASCOTA ESTAMPADO HUESO AFELPADO 70X50X15CM SURTIDO"
-                                data-product-price="7500.00"
-                                data-product-sku="0231917">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 13 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0249338.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FF6347/333333?text=CEPILLO';" alt="Imagen de Cepillo Plástico Rojo" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 19.5X11.5CM ROJO</h4>
-                        <p class="product-price">Precio: ₡975.00</p>
-                        <p class="product-description">Cepillo de plástico rojo de 19.5x11.5cm, ideal para el aseo diario de tu mascota, ayudando a remover el pelo suelto y la suciedad.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0249338">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="CEPILLO PLASTICO P/MASCOTA 19.5X11.5CM ROJO"
-                                data-product-price="975.00"
-                                data-product-sku="0249338">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 14 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0254632.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/40E0D0/333333?text=CEPILLO';" alt="Imagen de Cepillo Plástico Negro Turquesa" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">CEPILLO PLASTICO P/MASCOTA 7.5X16.5CM NEGRO TURQUESA</h4>
-                        <p class="product-price">Precio: ₡3,450.00</p>
-                        <p class="product-description">Cepillo de plástico en color negro y turquesa de 7.5x16.5cm, diseñado para un cepillado suave y eficiente en mascotas de todo tipo de pelaje.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0254632">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="CEPILLO PLASTICO P/MASCOTA 7.5X16.5CM NEGRO TURQUESA"
-                                data-product-price="3450.00"
-                                data-product-sku="0254632">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 15 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0272976.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFD700/333333?text=COBIJA';" alt="Imagen de Cobija Estampada" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">COBIJA P/MASCOTA ESTAMPADO 70X100CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,075.00</p>
-                        <p class="product-description">Suave cobija estampada para mascota de 70x100cm, ideal para mantener a tu compañero cálido y cómodo en cualquier superficie.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0272976">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="COBIJA P/MASCOTA ESTAMPADO 70X100CM SURTIDO"
-                                data-product-price="1075.00"
-                                data-product-sku="0272976">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 16 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0247108.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/8A2BE2/FFFFFF?text=COLLAR';" alt="Imagen de Collar Multicolor" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.0CM MULTICOLOR SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,500.00</p>
-                        <p class="product-description">Collar liso ajustable para mascota de 2.0cm, disponible en un surtido de colores vibrantes, perfecto para el uso diario.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247108">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="COLLAR P/MASCOTA LISO AJUSTABLE 2.0CM MULTICOLOR SURTIDO"
-                                data-product-price="1500.00"
-                                data-product-sku="0247108">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 17 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0247112.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DA70D6/333333?text=COLLAR';" alt="Imagen de Collar Ajustable" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">COLLAR P/MASCOTA LISO AJUSTABLE 2.5CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,975.00</p>
-                        <p class="product-description">Collar liso ajustable para mascota de 2.5cm, disponible en un surtido de colores, que ofrece durabilidad y confort para tu mascota.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247112">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="COLLAR P/MASCOTA LISO AJUSTABLE 2.5CM SURTIDO"
-                                data-product-price="1975.00"
-                                data-product-sku="0247112">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 18 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0278977.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFA07A/333333?text=HUESO';" alt="Imagen de Hueso Plástico con Sonido" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">HUESO PLASTICO P/MASCOTA C/RELIEVE HUELLA SONIDO 16X6CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,250.00</p>
-                        <p class="product-description">Hueso de plástico con relieve de huella y sonido, de 16x6cm, ideal para el juego y entretenimiento de tu mascota, disponible en varios diseños.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0278977">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="HUESO PLASTICO P/MASCOTA C/RELIEVE HUELLA SONIDO 16X6CM SURTIDO"
-                                data-product-price="1250.00"
-                                data-product-sku="0278977">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 19 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0278972.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FF7F50/FFFFFF?text=HUESO';" alt="Imagen de Hueso Plástico Liso" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">HUESO PLASTICO P/MASCOTA LISO+RELIEVE C/SONIDO 16X8CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,500.00</p>
-                        <p class="product-description">Hueso de plástico liso con relieve y sonido, de 16x8cm, un juguete duradero y divertido para mantener a tu mascota activa y feliz.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0278972">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="HUESO PLASTICO P/MASCOTA LISO+RELIEVE C/SONIDO 16X8CM SURTIDO"
-                                data-product-price="1500.00"
-                                data-product-sku="0278972">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 20 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0273630.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/C6E2EE/333333?text=PAD';" alt="Imagen de Pad Absorbente" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">PAD ABSORBENTE P/MASCOTA 5 CAPAS 60X60 50UND</h4>
-                        <p class="product-price">Precio: ₡3,950.00</p>
-                        <p class="product-description">Pad absorbente de 5 capas para mascotas, de 60x60cm, paquete de 50 unidades, ideal para el entrenamiento de cachorros o mascotas mayores.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0273630">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="PAD ABSORBENTE P/MASCOTA 5 CAPAS 60X60 50UND"
-                                data-product-price="3950.00"
-                                data-product-sku="0273630">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 21 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0247094.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFDDAA/333333?text=PECHERA';" alt="Imagen de Pechera Reflectiva" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">PECHERA P/MASCOTA C/FRANJA REFLECTIVA AJUSTABLE BICOLOR SURTIDO</h4>
-                        <p class="product-price">Precio: ₡6,000.00</p>
-                        <p class="product-description">Pechera para mascota con franja reflectiva, ajustable y bicolor, disponible en surtido, ideal para paseos seguros durante la noche.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247094">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="PECHERA P/MASCOTA C/FRANJA REFLECTIVA AJUSTABLE BICOLOR SURTIDO"
-                                data-product-price="6000.00"
-                                data-product-sku="0247094">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 22 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0250469.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/AFEEEE/333333?text=PELUCHE';" alt="Imagen de Peluche Animal" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">PELUCHE ANIMAL P/MASCOTA 23X8CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,200.00</p>
-                        <p class="product-description">Peluche con forma de animal para mascota, de 23x8cm, disponible en un surtido de simpáticos diseños, perfecto para jugar y morder.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0250469">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="PELUCHE ANIMAL P/MASCOTA 23X8CM SURTIDO"
-                                data-product-price="1200.00"
-                                data-product-sku="0250469">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 23 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0279402.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/DDA0DD/333333?text=TAZA';" alt="Imagen de Taza Metálica con Base" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA METALICA C/BASE PLASTICA P/MASCOTA C/RELIEVE RAYAS 33X18X5.5CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡3,500.00</p>
-                        <p class="product-description">Taza metálica con base plástica y relieve de rayas, de 33x18x5.5cm, ideal para el agua o la comida de tu mascota, surtida.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0279402">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA METALICA C/BASE PLASTICA P/MASCOTA C/RELIEVE RAYAS 33X18X5.5CM SURTIDO"
-                                data-product-price="3500.00"
-                                data-product-sku="0279402">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 24 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0216849.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/D3D3D3/333333?text=TAZA';" alt="Imagen de Taza Metálica Antideslizante" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA METALICA P/MASCOTA ANTIDESLIZANTE 18CM PLATEADO NEGRO</h4>
-                        <p class="product-price">Precio: ₡1,500.00</p>
-                        <p class="product-description">Taza metálica antideslizante para mascota de 18cm, en tonos plateado y negro, que asegura estabilidad al comer o beber.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0216849">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA METALICA P/MASCOTA ANTIDESLIZANTE 18CM PLATEADO NEGRO"
-                                data-product-price="1500.00"
-                                data-product-sku="0216849">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 25 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0247215.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/B0C4DE/333333?text=TAZA';" alt="Imagen de Taza Metálica Estampada" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA METALICA P/MASCOTA ESTAMPADO HUELLA+HUESO ANTIDESLIZANTE 14CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡2,750.00</p>
-                        <p class="product-description">Taza metálica con estampado de huella y hueso, antideslizante y de 14cm, disponible en surtido, para una alimentación divertida y segura.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0247215">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA METALICA P/MASCOTA ESTAMPADO HUELLA+HUESO ANTIDESLIZANTE 14CM SURTIDO"
-                                data-product-price="2750.00"
-                                data-product-sku="0247215">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 26 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0253758.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/8470FF/333333?text=TAZA';" alt="Imagen de Taza Metálica con Detalle" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA METALICA P/MASCOTA LISA+DETALLE RELIEVE HUELLA 22CM PLATEADO</h4>
-                        <p class="product-price">Precio: ₡1,500.00</p>
-                        <p class="product-description">Taza metálica lisa con detalle de relieve de huella, de 22cm en color plateado, un diseño elegante y funcional para tu mascota.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253758">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA METALICA P/MASCOTA LISA+DETALLE RELIEVE HUELLA 22CM PLATEADO"
-                                data-product-price="1500.00"
-                                data-product-sku="0253758">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 27 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0253762.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/ADD8E6/333333?text=TAZA';" alt="Imagen de Taza Metálica Lisa" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO 14CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,750.00</p>
-                        <p class="product-description">Taza metálica lisa con estampado, de 14cm, disponible en surtido, ideal para la alimentación diaria de tu mascota con un toque de estilo.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253762">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA METALICA P/MASCOTA LISA ESTAMPADO 14CM SURTIDO"
-                                data-product-price="1750.00"
-                                data-product-sku="0253762">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 28 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0253766.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/B0E0E6/333333?text=TAZA';" alt="Imagen de Taza Metálica con Huella" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA METALICA P/MASCOTA LISA ESTAMPADO HUELLA 18CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡1,500.00</p>
-                        <p class="product-description">Taza metálica lisa con estampado de huella, de 18cm, disponible en surtido, para una comida más amena y organizada.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0253766">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA METALICA P/MASCOTA LISA ESTAMPADO HUELLA 18CM SURTIDO"
-                                data-product-price="1500.00"
-                                data-product-sku="0253766">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 29 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0265334.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/AEC6CF/FFFFFF?text=TAZA';" alt="Imagen de Taza Plástica Lisa" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA PLASTICA P/MASCOTA LISA 8.3X24.8X25.6CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡950.00</p>
-                        <p class="product-description">Taza plástica lisa para mascota, de 8.3x24.8x25.6cm, disponible en surtido, ligera y fácil de limpiar, ideal para uso diario.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0265334">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA PLASTICA P/MASCOTA LISA 8.3X24.8X25.6CM SURTIDO"
-                                data-product-price="950.00"
-                                data-product-sku="0265334">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 30 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0279418.JPG" onerror="this.onerror=null;this.src='https://placehold.co/150x150/ADD8E6/333333?text=TAZA';" alt="Imagen de Taza Plástica Ovalada" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TAZA PLASTICA P/MASCOTA OVALADA LISA 13.8X10.1X8.1CM SURTIDO</h4>
-                        <p class="product-price">Precio: ₡950.00</p>
-                        <p class="product-description">Taza plástica ovalada lisa para mascota, de 13.8x10.1x8.1cm, disponible en surtido, con un diseño práctico y moderno.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0279418">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TAZA PLASTICA P/MASCOTA OVALADA LISA 13.8X10.1X8.1CM SURTIDO"
-                                data-product-price="950.00"
-                                data-product-sku="0279418">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Producto 31 -->
-            <div class="col-12 col-md-6">
-                <div class="product-card">
-                    <div class="product-media">
-                        <img src="images/0249265.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/FFDDC1/333333?text=TOALLA';" alt="Imagen de Toalla Húmeda" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <h4 class="product-title">TOALLA HUMEDA P/MASCOTA 100UND AZUL+BLANCO</h4>
-                        <p class="product-price">Precio: ₡950.00</p>
-                        <p class="product-description">Toallas húmedas para mascota, 100 unidades en colores azul y blanco, ideales para una limpieza rápida y efectiva, dejando a tu mascota fresca.</p>
-                        <div class="product-actions">
-                            <input type="number" class="form-control quantity-input" value="1" min="1" data-product-sku="0249265">
-                            <button class="btn btn-primary add-to-cart-btn"
-                                data-product-name="TOALLA HUMEDA P/MASCOTA 100UND AZUL+BLANCO"
-                                data-product-price="950.00"
-                                data-product-sku="0249265">
-                                Añadir a la lista
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Catálogo Jardinería</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <!-- Botón para abrir el modal del carrito -->
+                        <button class="btn btn-view-list me-2" data-bs-toggle="modal" data-bs-target="#shoppingCartModal">
+                            <i class="fas fa-shopping-cart me-2"></i>Ver mi Lista
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="cart-button-container">
-            <button id="viewCartBtn" class="btn btn-success btn-lg">Ver lista y enviar por WhatsApp</button>
+    <!-- Contenido principal del catálogo -->
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Nuestros Productos de Jardinería</h1>
+
+        <!-- Swiper -->
+        <div class="swiper mySwiper" id="productSwiper">
+            <div class="swiper-wrapper">
+
+                <!-- Producto 1: BANDEJA CARTON -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280468.JPG" class="img-fluid" alt="BANDEJA CARTON RECTANGULAR LISA 12 COMPARTIMIENTOS">
+                        <div class="product-sku">SKU: 0280468</div>
+                        <div class="product-title">BANDEJA CARTON RECTANGULAR LISA 12 COMPARTIMIENTOS</div>
+                        <div class="product-price">₡1,100</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 2: BANDEJA PLASTICA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0278956.JPG" class="img-fluid" alt="BANDEJA PLASTICA RECTANGULAR 200 COMPARTIMIENTOS">
+                        <div class="product-sku">SKU: 0278956</div>
+                        <div class="product-title">BANDEJA PLASTICA RECTANGULAR 200 COMPARTIMIENTOS</div>
+                        <div class="product-price">₡950</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 3: BASE PLASTICA RECTANGULAR P/OASIS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0260070.JPG" class="img-fluid" alt="BASE PLASTICA RECTANGULAR P/OASIS">
+                        <div class="product-sku">SKU: 0260070</div>
+                        <div class="product-title">BASE PLASTICA RECTANGULAR P/OASIS</div>
+                        <div class="product-price">₡750</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 4: BASE PLASTICA REDONDA LISA P/OASIS 14.5CM VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0260068.JPG" class="img-fluid" alt="BASE PLASTICA REDONDA LISA P/OASIS 14.5CM VERDE">
+                        <div class="product-sku">SKU: 0260068</div>
+                        <div class="product-title">BASE PLASTICA REDONDA LISA P/OASIS 14.5CM VERDE</div>
+                        <div class="product-price">₡500</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 5: BASE PLASTICA REDONDA P/OASIS C/RELIEVE 20CM VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0260069.JPG" class="img-fluid" alt="BASE PLASTICA REDONDA P/OASIS C/RELIEVE 20CM VERDE">
+                        <div class="product-sku">SKU: 0260069</div>
+                        <div class="product-title">BASE PLASTICA REDONDA P/OASIS C/RELIEVE 20CM VERDE</div>
+                        <div class="product-price">₡650</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 6: MACETA CARTON REDONDA BIODEGRADABLE 6CM 24UND MARRON -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280466.JPG" class="img-fluid" alt="MACETA CARTON REDONDA BIODEGRADABLE 6CM 24UND MARRON">
+                        <div class="product-sku">SKU: 0280466</div>
+                        <div class="product-title">MACETA CARTON REDONDA BIODEGRADABLE 6CM 24UND MARRON</div>
+                        <div class="product-price">₡825</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 7: MACETA CARTON REDONDA LISA BIODEGRADABLE 8CM 24UND MARRON -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280467.JPG" class="img-fluid" alt="MACETA CARTON REDONDA LISA BIODEGRADABLE 8CM 24UND MARRON">
+                        <div class="product-sku">SKU: 0280467</div>
+                        <div class="product-title">MACETA CARTON REDONDA LISA BIODEGRADABLE 8CM 24UND MARRON</div>
+                        <div class="product-price">₡875</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 8: MACETA CERAMICA C/RELIEVE 11.8X11.8X10CM SURTIDO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0257297.JPG" class="img-fluid" alt="MACETA CERAMICA C/RELIEVE 11.8X11.8X10CM SURTIDO">
+                        <div class="product-sku">SKU: 0257297</div>
+                        <div class="product-title">MACETA CERAMICA C/RELIEVE 11.8X11.8X10CM SURTIDO</div>
+                        <div class="product-price">₡2,100</div>
+                        <div class="product-promo">Promoción: ₡1,475.00 (29.76%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 9: MACETA CERAMICA LISA REDONDA C/RELIEVE RAYAS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0258034.JPG" class="img-fluid" alt="MACETA CERAMICA LISA REDONDA C/RELIEVE RAYAS">
+                        <div class="product-sku">SKU: 0258034</div>
+                        <div class="product-title">MACETA CERAMICA LISA REDONDA C/RELIEVE RAYAS</div>
+                        <div class="product-price">₡1,150</div>
+                        <div class="product-promo">Promoción: ₡800.00 (30.43%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 10: MACETA CERAMICA LISA+RELIEVE PUNTOS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0257296.JPG" class="img-fluid" alt="MACETA CERAMICA LISA+RELIEVE PUNTOS">
+                        <div class="product-sku">SKU: 0257296</div>
+                        <div class="product-title">MACETA CERAMICA LISA+RELIEVE PUNTOS</div>
+                        <div class="product-price">₡1,800</div>
+                        <div class="product-promo">Promoción: ₡1,250.00 (30.56%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 11: MACETA CERAMICA LISA+RELIEVE RAYAS DETALLE NATURE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0257294.JPG" class="img-fluid" alt="MACETA CERAMICA LISA+RELIEVE RAYAS DETALLE NATURE">
+                        <div class="product-sku">SKU: 0257294</div>
+                        <div class="product-title">MACETA CERAMICA LISA+RELIEVE RAYAS DETALLE NATURE</div>
+                        <div class="product-price">₡2,250</div>
+                        <div class="product-promo">Promoción: ₡1,575.00 (30%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 12: MACETA CERAMICA RELIEVE RAYAS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0257295.JPG" class="img-fluid" alt="MACETA CERAMICA RELIEVE RAYAS">
+                        <div class="product-sku">SKU: 0257295</div>
+                        <div class="product-title">MACETA CERAMICA RELIEVE RAYAS</div>
+                        <div class="product-price">₡1,800</div>
+                        <div class="product-promo">Promoción: ₡1,250.00 (30.56%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 13: MACETA COLGANTE METALICA LISA C/FIBRA COCO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280582.JPG" class="img-fluid" alt="MACETA COLGANTE METALICA LISA C/FIBRA COCO">
+                        <div class="product-sku">SKU: 0280582</div>
+                        <div class="product-title">MACETA COLGANTE METALICA LISA C/FIBRA COCO</div>
+                        <div class="product-price">₡2,950</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 14: MACETA MADERA CUADRADA C/ASA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273617.JPG" class="img-fluid" alt="MACETA MADERA CUADRADA C/ASA">
+                        <div class="product-sku">SKU: 0273617</div>
+                        <div class="product-title">MACETA MADERA CUADRADA C/ASA</div>
+                        <div class="product-price">₡3,625</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 15: MACETA METALICA C/RELIEVE FLOWERS GARDEN+RAYAS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273041.JPG" class="img-fluid" alt="MACETA METALICA C/RELIEVE FLOWERS GARDEN+RAYAS">
+                        <div class="product-sku">SKU: 0273041</div>
+                        <div class="product-title">MACETA METALICA C/RELIEVE FLOWERS GARDEN+RAYAS</div>
+                        <div class="product-price">₡2,325</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 16: MACETA METALICA C/RELIEVE ORIGINAL 1982 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273036.JPG" class="img-fluid" alt="MACETA METALICA C/RELIEVE ORIGINAL 1982">
+                        <div class="product-sku">SKU: 0273036</div>
+                        <div class="product-title">MACETA METALICA C/RELIEVE ORIGINAL 1982</div>
+                        <div class="product-price">₡1,475</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 17: MACETA PLASTICA 6.8X5.6X4.6CM TERRA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0124847.JPG" class="img-fluid" alt="MACETA PLASTICA 6.8X5.6X4.6CM TERRA">
+                        <div class="product-sku">SKU: 0124847</div>
+                        <div class="product-title">MACETA PLASTICA 6.8X5.6X4.6CM TERRA</div>
+                        <div class="product-price">₡100</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 18: MACETA PLASTICA C/RELIEVE 20X25CM BLANCO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0275418.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE 20X25CM BLANCO">
+                        <div class="product-sku">SKU: 0275418</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE 20X25CM BLANCO</div>
+                        <div class="product-price">₡700</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 19: MACETA PLASTICA C/RELIEVE 9.5X9CM NARANJA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273052.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE 9.5X9CM NARANJA">
+                        <div class="product-sku">SKU: 0273052</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE 9.5X9CM NARANJA</div>
+                        <div class="product-price">₡450</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 20: MACETA PLASTICA C/RELIEVE RAYAS #6 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0282444.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE RAYAS #6">
+                        <div class="product-sku">SKU: 0282444</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE RAYAS #6</div>
+                        <div class="product-price">₡575</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 21: MACETA PLASTICA C/RELIEVE RAYAS #8 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0282445.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE RAYAS #8">
+                        <div class="product-sku">SKU: 0282445</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE RAYAS #8</div>
+                        <div class="product-price">₡825</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 22: MACETA PLASTICA C/RELIEVE RAYAS 0.7L -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0233940.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE RAYAS 0.7L">
+                        <div class="product-sku">SKU: 0233940</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE RAYAS 0.7L</div>
+                        <div class="product-price">₡375</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 23: MACETA PLASTICA C/RELIEVE RAYAS 1.1L -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0233941.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE RAYAS 1.1L">
+                        <div class="product-sku">SKU: 0233941</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE RAYAS 1.1L</div>
+                        <div class="product-price">₡450</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 24: MACETA PLASTICA C/RELIEVE RAYAS+ASA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273049.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE RAYAS+ASA">
+                        <div class="product-sku">SKU: 0273049</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE RAYAS+ASA</div>
+                        <div class="product-price">₡1,450</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 25: MACETA PLASTICA C/RELIEVE+DETALLE BORDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273051.JPG" class="img-fluid" alt="MACETA PLASTICA C/RELIEVE+DETALLE BORDE">
+                        <div class="product-sku">SKU: 0273051</div>
+                        <div class="product-title">MACETA PLASTICA C/RELIEVE+DETALLE BORDE</div>
+                        <div class="product-price">₡600</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 26: MACETA PLASTICA C/TEXTURA+DETALLE PUNTOS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0271469.JPG" class="img-fluid" alt="MACETA PLASTICA C/TEXTURA+DETALLE PUNTOS">
+                        <div class="product-sku">SKU: 0271469</div>
+                        <div class="product-title">MACETA PLASTICA C/TEXTURA+DETALLE PUNTOS</div>
+                        <div class="product-price">₡2,400</div>
+                        <div class="product-promo">Promoción: ₡1,925.00 (30%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 27: MACETA PLASTICA COLGANTE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0282690.JPG" class="img-fluid" alt="MACETA PLASTICA COLGANTE">
+                        <div class="product-sku">SKU: 0282690</div>
+                        <div class="product-title">MACETA PLASTICA COLGANTE</div>
+                        <div class="product-price">₡2,750</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 28: MACETA PLASTICA ESTAMPADO C/RELIEVE SURTIDO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0273050.JPG" class="img-fluid" alt="MACETA PLASTICA ESTAMPADO C/RELIEVE SURTIDO">
+                        <div class="product-sku">SKU: 0273050</div>
+                        <div class="product-title">MACETA PLASTICA ESTAMPADO C/RELIEVE SURTIDO</div>
+                        <div class="product-price">₡750</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 29: MACETA PLASTICA LISA 14CM TERRACOTA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280586.JPG" class="img-fluid" alt="MACETA PLASTICA LISA 14CM TERRACOTA">
+                        <div class="product-sku">SKU: 0280586</div>
+                        <div class="product-title">MACETA PLASTICA LISA 14CM TERRACOTA</div>
+                        <div class="product-price">₡300</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 30: MACETA PLASTICA LISA 16CM TERRACOTA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280587.JPG" class="img-fluid" alt="MACETA PLASTICA LISA 16CM TERRACOTA">
+                        <div class="product-sku">SKU: 0280587</div>
+                        <div class="product-title">MACETA PLASTICA LISA 16CM TERRACOTA</div>
+                        <div class="product-price">₡325</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 31: MACETA PLASTICA LISA 18CM TERRACOTA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280588.JPG" class="img-fluid" alt="MACETA PLASTICA LISA 18CM TERRACOTA">
+                        <div class="product-sku">SKU: 0280588</div>
+                        <div class="product-title">MACETA PLASTICA LISA 18CM TERRACOTA</div>
+                        <div class="product-price">₡350</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 32: MACETA PLASTICA LISA 20CM TERRACOTA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0280589.JPG" class="img-fluid" alt="MACETA PLASTICA LISA 20CM TERRACOTA">
+                        <div class="product-sku">SKU: 0280589</div>
+                        <div class="product-title">MACETA PLASTICA LISA 20CM TERRACOTA</div>
+                        <div class="product-price">₡400</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 33: MACETA PLASTICA LISA+RELIEVE 22.5X42CM GRIS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0278263.JPG" class="img-fluid" alt="MACETA PLASTICA LISA+RELIEVE 22.5X42CM GRIS">
+                        <div class="product-sku">SKU: 0278263</div>
+                        <div class="product-title">MACETA PLASTICA LISA+RELIEVE 22.5X42CM GRIS</div>
+                        <div class="product-price">₡6,500</div>
+                        <div class="product-promo">Promoción: ₡4,550.00 (30%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 34: MACETA PLASTICA LISA+RELIEVE 9X9CM SURTIDO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0271465.JPG" class="img-fluid" alt="MACETA PLASTICA LISA+RELIEVE 9X9CM SURTIDO">
+                        <div class="product-sku">SKU: 0271465</div>
+                        <div class="product-title">MACETA PLASTICA LISA+RELIEVE 9X9CM SURTIDO</div>
+                        <div class="product-price">₡700</div>
+                        <div class="product-promo">Promoción: ₡675.00 (30.77%) hasta 01/07/2025</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 35: MACETA PLASTICA PERFORADO C/RELIEVE+SEPARADOR SURTIDO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0274006.JPG" class="img-fluid" alt="MACETA PLASTICA PERFORADO C/RELIEVE+SEPARADOR SURTIDO">
+                        <div class="product-sku">SKU: 0274006</div>
+                        <div class="product-title">MACETA PLASTICA PERFORADO C/RELIEVE+SEPARADOR SURTIDO</div>
+                        <div class="product-price">₡975</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 36: MACETA PLASTICA RECTANGULAR C/RELIEVE RAYAS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0271473.JPG" class="img-fluid" alt="MACETA PLASTICA RECTANGULAR C/RELIEVE RAYAS">
+                        <div class="product-sku">SKU: 0271473</div>
+                        <div class="product-title">MACETA PLASTICA RECTANGULAR C/RELIEVE RAYAS</div>
+                        <div class="product-price">₡2,525</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 37: MACETERO PLASTICO C/CADENA P/COLGAR -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0082198.JPG" class="img-fluid" alt="MACETERO PLASTICO C/CADENA P/COLGAR">
+                        <div class="product-sku">SKU: 0082198</div>
+                        <div class="product-title">MACETERO PLASTICO C/CADENA P/COLGAR</div>
+                        <div class="product-price">₡2,225</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 38: MACETERO PLASTICO LISO #2 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0149992.JPG" class="img-fluid" alt="MACETERO PLASTICO LISO #2">
+                        <div class="product-sku">SKU: 0149992</div>
+                        <div class="product-title">MACETERO PLASTICO LISO #2</div>
+                        <div class="product-price">₡450</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 39: MACETERO PLASTICO LISO #3 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0097662.JPG" class="img-fluid" alt="MACETERO PLASTICO LISO #3">
+                        <div class="product-sku">SKU: 0097662</div>
+                        <div class="product-title">MACETERO PLASTICO LISO #3</div>
+                        <div class="product-price">₡550</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 40: MACETERO PLASTICO LISO #3 VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0173640.JPG" class="img-fluid" alt="MACETERO PLASTICO LISO #3 VERDE">
+                        <div class="product-sku">SKU: 0173640</div>
+                        <div class="product-title">MACETERO PLASTICO LISO #3 VERDE</div>
+                        <div class="product-price">₡550</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 41: MACETERO PLASTICO LISO #4 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0110902.JPG" class="img-fluid" alt="MACETERO PLASTICO LISO #4">
+                        <div class="product-sku">SKU: 0110902</div>
+                        <div class="product-title">MACETERO PLASTICO LISO #4</div>
+                        <div class="product-price">₡650</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 42: MACETERO PLASTICO LISO #5 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0097664.JPG" class="img-fluid" alt="MACETERO PLASTICO LISO #5">
+                        <div class="product-sku">SKU: 0097664</div>
+                        <div class="product-title">MACETERO PLASTICO LISO #5</div>
+                        <div class="product-price">₡975</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 43: MACETERO PLASTICO LISO #5 VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0110905.JPG" class="img-fluid" alt="MACETERO PLASTICO LISO #5 VERDE">
+                        <div class="product-sku">SKU: 0110905</div>
+                        <div class="product-title">MACETERO PLASTICO LISO #5 VERDE</div>
+                        <div class="product-price">₡975</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 44: MACETERO PLASTICO REDONDO #1 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0138108.JPG" class="img-fluid" alt="MACETERO PLASTICO REDONDO #1">
+                        <div class="product-sku">SKU: 0138108</div>
+                        <div class="product-title">MACETERO PLASTICO REDONDO #1</div>
+                        <div class="product-price">₡325</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 45: MACETERO PLASTICO REDONDO LISO #2 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0158988.JPG" class="img-fluid" alt="MACETERO PLASTICO REDONDO LISO #2">
+                        <div class="product-sku">SKU: 0158988</div>
+                        <div class="product-title">MACETERO PLASTICO REDONDO LISO #2</div>
+                        <div class="product-price">₡450</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 46: MACETERO PLASTICO SERINOVA #1 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0150025.JPG" class="img-fluid" alt="MACETERO PLASTICO SERINOVA #1">
+                        <div class="product-sku">SKU: 0150025</div>
+                        <div class="product-title">MACETERO PLASTICO SERINOVA #1</div>
+                        <div class="product-price">₡975</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 47: MACETERO PLASTICO SERINOVA LISO #1 VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0159579.JPG" class="img-fluid" alt="MACETERO PLASTICO SERINOVA LISO #1 VERDE">
+                        <div class="product-sku">SKU: 0159579</div>
+                        <div class="product-title">MACETERO PLASTICO SERINOVA LISO #1 VERDE</div>
+                        <div class="product-price">₡975</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 48: MACETERO PLASTICO SERINOVA LISO #4 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0097663.JPG" class="img-fluid" alt="MACETERO PLASTICO SERINOVA LISO #4">
+                        <div class="product-sku">SKU: 0097663</div>
+                        <div class="product-title">MACETERO PLASTICO SERINOVA LISO #4</div>
+                        <div class="product-price">₡650</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 49: MACETERO PLASTICO SERINOVA LISO #7 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0110907.JPG" class="img-fluid" alt="MACETERO PLASTICO SERINOVA LISO #7">
+                        <div class="product-sku">SKU: 0110907</div>
+                        <div class="product-title">MACETERO PLASTICO SERINOVA LISO #7</div>
+                        <div class="product-price">₡1,650</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 50: MACETERO PLASTICO SERINOVA PLASTIK LISO #6 -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0149997.JPG" class="img-fluid" alt="MACETERO PLASTICO SERINOVA PLASTIK LISO #6">
+                        <div class="product-sku">SKU: 0149997</div>
+                        <div class="product-title">MACETERO PLASTICO SERINOVA PLASTIK LISO #6</div>
+                        <div class="product-price">₡1,100</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 51: MACETERO PORCELANA ANIMALES -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0229172.JPG" class="img-fluid" alt="MACETERO PORCELANA ANIMALES">
+                        <div class="product-sku">SKU: 0229172</div>
+                        <div class="product-title">MACETERO PORCELANA ANIMALES</div>
+                        <div class="product-price">₡1,700</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 52: MACETERO PORCELANA C/RELIEVE PUNTOS -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0229177.JPG" class="img-fluid" alt="MACETERO PORCELANA C/RELIEVE PUNTOS">
+                        <div class="product-sku">SKU: 0229177</div>
+                        <div class="product-title">MACETERO PORCELANA C/RELIEVE PUNTOS</div>
+                        <div class="product-price">₡675</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 53: MACETERO PORCELANA ESTAMPADO PUNTOS REDONDO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0229176.JPG" class="img-fluid" alt="MACETERO PORCELANA ESTAMPADO PUNTOS REDONDO">
+                        <div class="product-sku">SKU: 0229176</div>
+                        <div class="product-title">MACETERO PORCELANA ESTAMPADO PUNTOS REDONDO</div>
+                        <div class="product-price">₡625</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 54: MACETERO PORCELANA LISO REDONDO BLANCO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0229174.JPG" class="img-fluid" alt="MACETERO PORCELANA LISO REDONDO BLANCO">
+                        <div class="product-sku">SKU: 0229174</div>
+                        <div class="product-title">MACETERO PORCELANA LISO REDONDO BLANCO</div>
+                        <div class="product-price">₡600</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 55: MACETERO PORCELANA LISO REDONDO SURTIDO -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0229178.JPG" class="img-fluid" alt="MACETERO PORCELANA LISO REDONDO SURTIDO">
+                        <div class="product-sku">SKU: 0229178</div>
+                        <div class="product-title">MACETERO PORCELANA LISO REDONDO SURTIDO</div>
+                        <div class="product-price">₡750</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 56: PLATO PLASTICO REDONDO LISO P/MACETA #10 VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0282439.JPG" class="img-fluid" alt="PLATO PLASTICO REDONDO LISO P/MACETA #10 VERDE">
+                        <div class="product-sku">SKU: 0282439</div>
+                        <div class="product-title">PLATO PLASTICO REDONDO LISO P/MACETA #10 VERDE</div>
+                        <div class="product-price">₡725</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 57: PLATO PLASTICO REDONDO LISO P/MACETA #5 VERDE -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0282433.JPG" class="img-fluid" alt="PLATO PLASTICO REDONDO LISO P/MACETA #5 VERDE">
+                        <div class="product-sku">SKU: 0282433</div>
+                        <div class="product-title">PLATO PLASTICO REDONDO LISO P/MACETA #5 VERDE</div>
+                        <div class="product-price">₡175</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <!-- Producto 58: PLATO PLASTICO REDONDO LISO P/MACETA #9 TERRACOTA -->
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <img src="https://raw.githubusercontent.com/V10-ALM20/catalogo/refs/heads/main/images/0282436.JPG" class="img-fluid" alt="PLATO PLASTICO REDONDO LISO P/MACETA #9 TERRACOTA">
+                        <div class="product-sku">SKU: 0282436</div>
+                        <div class="product-title">PLATO PLASTICO REDONDO LISO P/MACETA #9 TERRACOTA</div>
+                        <div class="product-price">₡600</div>
+                        <input type="number" class="form-control form-control-quantity" value="1" min="1">
+                        <button class="btn btn-add-to-cart">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-    </main>
+    </div>
 
-    <!-- Mensaje de confirmación (custom, no alert) -->
-    <div id="messageBox" class="message-box"></div>
+    <!-- Modal para la lista de compras (Carrito) -->
+    <div class="modal fade" id="shoppingCartModal" tabindex="-1" aria-labelledby="shoppingCartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="shoppingCartModalLabel">Mi Lista de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí se cargarán dinámicamente los elementos de la lista -->
+                    <ul id="cartItemsList">
+                        <!-- Los ítems se agregarán aquí con JavaScript -->
+                    </ul>
+                    <p id="emptyCartMessage" style="display:none; text-align: center; color: #6c757d;">Tu lista de compras está vacía.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <!-- Botón para compartir la lista por WhatsApp -->
+                    <button type="button" class="btn btn-share-whatsapp" onclick="shareListOnWhatsApp()">
+                        <i class="fab fa-whatsapp me-2"></i>Compartir por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Bootstrap JS CDN (Bundle includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>&copy; 2025 Catálogo de Jardinería. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle con Popper (necesario para los modales) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        const shoppingList = [];
-        const whatsappNumber = "50670266841"; // Número de WhatsApp para Costa Rica
-
-        // Función para mostrar el mensaje de confirmación
-        function showMessage(message, type = 'success') {
-            const messageBox = document.getElementById('messageBox');
-            messageBox.textContent = message;
-            messageBox.className = `message-box show bg-${type}`; // Añadir clase de Bootstrap para el tipo de mensaje
-            setTimeout(() => {
-                messageBox.className = `message-box`; // Ocultar después de 3 segundos
-            }, 3000);
+        // Función para formatear el SKU
+        function formatSku(sku) {
+            if (sku.startsWith('1') || sku.startsWith('2')) {
+                return '0' + sku;
+            } else if (sku.startsWith('8') || sku.startsWith('9')) {
+                return '00' + sku;
+            }
+            return sku;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-            const viewCartBtn = document.getElementById('viewCartBtn');
+        // Array para almacenar los artículos en la lista de compras (temporal en el navegador)
+        let shoppingList = [];
 
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const productName = event.target.dataset.productName;
-                    const productPrice = parseFloat(event.target.dataset.productPrice);
-                    const productSku = event.target.dataset.productSku;
-                    const quantityInput = event.target.closest('.product-actions').querySelector('.quantity-input');
-                    let quantity = parseInt(quantityInput.value);
+        // Inicialización de Swiper
+        const productSwiper = new Swiper('.mySwiper', {
+            loop: true, // Para un carrusel infinito
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Configuración responsiva con breakpoints
+            breakpoints: {
+                // Cuando el ancho de ventana es >= 0px (móviles por defecto)
+                0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 10, // Pequeño espacio entre slides en móvil
+                },
+                // Cuando el ancho de ventana es >= 768px (tablets y escritorios)
+                768: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 30, // Espacio entre tarjetas en escritorio
+                }
+            }
+        });
 
-                    if (isNaN(quantity) || quantity <= 0) {
-                        showMessage('La cantidad debe ser al menos 1.', 'danger');
-                        return;
-                    }
+        // Función para agregar un artículo a la lista de compras
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productCard = event.target.closest('.product-card');
+                // Obtener el SKU original del atributo de datos o del texto, luego formatearlo
+                let originalSku = productCard.querySelector('.product-sku').textContent.replace('SKU: ', '');
+                // No formateamos el SKU aquí, ya debe estar formateado en el HTML
+                const sku = originalSku; // Usar el SKU tal como está en el HTML
 
-                    // Buscar si el producto ya está en la lista
-                    const existingItemIndex = shoppingList.findIndex(item => item.sku === productSku);
+                const title = productCard.querySelector('.product-title').textContent;
+                const priceText = productCard.querySelector('.product-price').textContent;
+                const quantity = parseInt(productCard.querySelector('.form-control-quantity').value);
+                const promoElement = productCard.querySelector('.product-promo');
+                const promo = promoElement ? promoElement.textContent : 'Sin promoción';
 
-                    if (existingItemIndex > -1) {
-                        // Si existe, actualizar la cantidad
-                        shoppingList[existingItemIndex].quantity += quantity;
-                        showMessage(`${quantity} unidad(es) de ${productName} añadida(s) de nuevo a la lista. Cantidad total: ${shoppingList[existingItemIndex].quantity}`, 'info');
-                    } else {
-                        // Si no existe, añadir nuevo producto
-                        shoppingList.push({
-                            name: productName,
-                            price: productPrice,
-                            sku: productSku,
-                            quantity: quantity
-                        });
-                        showMessage(`"${productName}" añadido a la lista.`, 'success');
-                    }
-                    console.log('Lista de compras actual:', shoppingList);
-                });
-            });
+                // Limpiar el precio para facilitar cálculos si fuera necesario (solo numérico)
+                const price = parseFloat(priceText.replace('₡', '').replace(',', ''));
 
-            viewCartBtn.addEventListener('click', () => {
-                if (shoppingList.length === 0) {
-                    showMessage('Tu lista de compras está vacía.', 'warning');
-                    return;
+                const item = {
+                    sku: sku, // Incluir SKU ya formateado
+                    title: title,
+                    price: price,
+                    quantity: quantity,
+                    promo: promo
+                };
+
+                // Verificar si el artículo ya está en la lista para actualizar la cantidad
+                const existingItemIndex = shoppingList.findIndex(i => i.sku === item.sku); // Buscar por SKU
+                if (existingItemIndex > -1) {
+                    shoppingList[existingItemIndex].quantity += quantity;
+                } else {
+                    shoppingList.push(item);
                 }
 
-                let total = 0;
-                let shoppingListText = "¡Hola! Mi lista de compras de mascotas es la siguiente:\n\n";
-
-                shoppingList.forEach((item, index) => {
-                    const itemTotal = item.quantity * item.price;
-                    total += itemTotal;
-                    shoppingListText += `${index + 1}. ${item.name} (SKU: ${item.sku})\n   Cantidad: ${item.quantity} x ₡${item.price.toFixed(2)} = ₡${itemTotal.toFixed(2)}\n`;
-                });
-
-                shoppingListText += `\nTotal estimado: ₡${total.toFixed(2)}`;
-
-                // Codificar el texto para la URL de WhatsApp
-                const encodedText = encodeURIComponent(shoppingListText);
-                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-
-                // Abrir WhatsApp en una nueva pestaña
-                window.open(whatsappUrl, '_blank');
+                // Mostrar una confirmación al usuario
+                console.log(`${quantity} x ${title} (SKU: ${sku}) agregado a la lista.`);
             });
         });
+
+        // Función para actualizar el contenido del modal de la lista de compras
+        function updateShoppingCartModal() {
+            const modalBodyList = document.getElementById('cartItemsList');
+            const emptyMessage = document.getElementById('emptyCartMessage');
+            modalBodyList.innerHTML = ''; // Limpiar la lista actual
+
+            if (shoppingList.length === 0) {
+                emptyMessage.style.display = 'block'; // Mostrar mensaje de lista vacía
+            } else {
+                emptyMessage.style.display = 'none'; // Ocultar mensaje
+                shoppingList.forEach((item, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('d-flex', 'justify-content-between', 'align-items-center');
+
+                    let itemDetails = `${item.quantity} x ${item.title} (SKU: ${item.sku}) - ₡${item.price.toLocaleString('es-CR')}`;
+                    if (item.promo && item.promo !== 'Sin promoción') {
+                        itemDetails += `, ${item.promo}`;
+                    }
+                    itemDetails += `) `; // Add space before remove button
+
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = itemDetails;
+                    listItem.appendChild(textSpan);
+
+                    // Botón para eliminar un artículo del carrito
+                    const removeButton = document.createElement('button');
+                    removeButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ms-2');
+                    removeButton.innerHTML = '<i class="fas fa-trash"></i>'; // Ícono de bote de basura
+                    removeButton.addEventListener('click', () => {
+                        removeItemFromCart(index);
+                    });
+                    listItem.appendChild(removeButton);
+
+                    modalBodyList.appendChild(listItem);
+                });
+            }
+        }
+
+        // Función para eliminar un artículo del carrito
+        function removeItemFromCart(index) {
+            shoppingList.splice(index, 1); // Eliminar el artículo del array
+            updateShoppingCartModal(); // Actualizar el modal
+        }
+
+
+        // Event listener para actualizar el modal cada vez que se abre
+        const shoppingCartModal = document.getElementById('shoppingCartModal');
+        shoppingCartModal.addEventListener('show.bs.modal', updateShoppingCartModal);
+
+
+        // Función para compartir la lista de compras por WhatsApp
+        function shareListOnWhatsApp() {
+            let message = "¡Hola! Esta es mi lista de compras de jardinería:\n\n";
+            if (shoppingList.length === 0) {
+                message += "Mi lista está vacía en este momento.";
+            } else {
+                shoppingList.forEach(item => {
+                    message += `- ${item.quantity} x ${item.title} (SKU: ${item.sku}) - ₡${item.price.toLocaleString('es-CR')}`;
+                    if (item.promo && item.promo !== 'Sin promoción') {
+                        message += `, ${item.promo}`;
+                    }
+                    message += ")\n";
+                });
+                message += "\n¡Avísame si tienes dudas!";
+            }
+
+            // Codificar el mensaje para la URL de WhatsApp
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank'); // Abrir en una nueva pestaña
+        }
     </script>
 </body>
 </html>
